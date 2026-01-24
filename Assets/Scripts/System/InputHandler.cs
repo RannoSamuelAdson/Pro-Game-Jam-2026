@@ -69,6 +69,10 @@ public class InputHandler : MonoBehaviour
                 inputEnabled = true;
                 puzzleMode = false;
                 break;
+            case GameState.Win:
+                inputEnabled = false;
+                puzzleMode = false;
+                break;
             default:
                 Debug.LogWarning($"Invalid state {inputEnabled}!");
                 break;

@@ -686,6 +686,7 @@ MonoBehaviour:
   optionsMenuCG: {fileID: 5711069046674523815}
   optionsButton: {fileID: 991799681}
   quitButton: {fileID: 5235411}
+  firstLevel: {fileID: 11400000, guid: e1f5a2edca5f16742a91c5cad16a7f60, type: 2}
 --- !u!114 &697484464
 MonoBehaviour:
   m_ObjectHideFlags: 0

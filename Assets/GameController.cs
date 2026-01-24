@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -7,11 +8,14 @@ public class GameController : MonoBehaviour
     private GameState currentState;
     public DogController dogController;
     private int dogs = 3; // three dogs,TODO: unify with other dog logic
+    private int solvedPuzzles;
+    private int puzzleTarget;
     private void OnEnable()
     {
         LevelChanger.OnFadeInFinished += StartGame;
         InteractablesHandler.OpenPuzzleMenu += EnterPuzzleMode;
         PuzzleController.OnLeavePuzzle += LeavePuzzleMode;
+        LevelChanger.OnGameplayLevelLoaded += SetupLevel;
         ChangeGameState += HandleNewState;
         Timer.OnTimerEnd += HandleTimerEnd;
     }
@@ -22,7 +26,24 @@ public class GameController : MonoBehaviour
         ChangeGameState -= HandleNewState;
         InteractablesHandler.OpenPuzzleMenu -= EnterPuzzleMode;
         PuzzleController.OnLeavePuzzle -= LeavePuzzleMode;
+        LevelChanger.OnGameplayLevelLoaded -= SetupLevel;
         Timer.OnTimerEnd -= HandleTimerEnd;
+    }
+
+    private void SetupLevel(LevelData data)
+    {
+        if (data.levelID == 0) // first level 
+        {
+            dogs = 3;
+            SaveManager.Instance.runtimeData.dogs = 3;
+        }
+        else
+        {
+            dogs = SaveManager.Instance.runtimeData.dogs;
+        }
+        dogController.spawnDogs(dogs);
+        solvedPuzzles = 0;
+        puzzleTarget = data.targetScore;
     }
 
     private void HandleTimerEnd()
@@ -46,6 +67,14 @@ public class GameController : MonoBehaviour
     private void LeavePuzzleMode(bool finished)
     {
         ChangeGameState?.Invoke(GameState.Active);
+        if (finished)
+        {
+            solvedPuzzles++;
+            if (solvedPuzzles >= puzzleTarget)
+            {
+                ChangeGameState?.Invoke(GameState.Win);
+            }
+        }
     }
 
     private void HandleNewState(GameState state)
@@ -68,6 +97,19 @@ public class GameController : MonoBehaviour
                 Time.timeScale = 0f;
                 LevelChanger.Instance.FadeToLevel("LoseScenario");
                 break;
+            case GameState.Win: // TODO - make it possible to win
+                Time.timeScale = 1f;
+                var currentLevel = SaveManager.Instance.runtimeData.currentLevel;
+                SaveManager.Instance.runtimeData.currentLevel = LevelChanger.Instance.GetNextLevel(currentLevel);
+                if (SaveManager.Instance.runtimeData.currentLevel != null)
+                {
+                    LevelChanger.Instance.FadeToLevel(SceneManager.GetActiveScene().name);
+                }
+                else
+                {
+                    LevelChanger.Instance.FadeToLevel("WinScenario"); // TODO - adjust text if you lose some dogs?
+                }
+                break;
         }
     }
 
@@ -78,7 +120,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        LevelChanger.Instance.FadeIn();
+        LevelChanger.Instance.HandleLevelLoad();
     }
 
 }
@@ -88,5 +130,6 @@ public enum GameState
     Inactive,
     Active,
     Puzzle,
-    Death
+    Death,
+    Win
 }

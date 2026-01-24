@@ -1,35 +1,26 @@
+using System.Collections.Generic;
 using UnityEngine;
-using System.Collections.Generic; 
 
 public class DogController : MonoBehaviour
 {
     public GameObject followTarget;
-    public float distance = 1.3f; 
-    public float speed = 0.03f; 
-    public GameObject DogPrefab; 
-    public int initialDogCount = 3;
-    
+    public float distance = 1.3f;
+    public float speed = 0.03f;
+    public GameObject DogPrefab;
+
     private List<GameObject> activeDogs = new List<GameObject>();
 
-    void Start()
-    {   
-        spawnDogs(initialDogCount);
-    }
 
-    void spawnDogs(int count)
+
+    public void spawnDogs(int count)
     {
-        for (int i = 0; i < count; i++) 
+        for (int i = 0; i < count; i++)
         {
             GameObject newDog = Instantiate(DogPrefab, new Vector3(0, 0, 0), Quaternion.identity);
             Dog dogScript = newDog.GetComponent<Dog>();
             dogScript.Init(distance, speed, followTarget);
             activeDogs.Add(newDog);
         }
-    }
-
-    void Update()
-    {
-        
     }
 
     public void removeDog()
@@ -42,13 +33,13 @@ public class DogController : MonoBehaviour
         }
     }
 
+    // do we even need this
     public void resetDog()
     {
         foreach (GameObject dog in activeDogs)
         {
-            if(dog != null) Destroy(dog);
+            if (dog != null) Destroy(dog);
         }
         activeDogs.Clear();
-        spawnDogs(initialDogCount);
     }
 }

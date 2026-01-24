@@ -112,6 +112,7 @@ public class GameData
     public int version = 1;
     public int highScore = 0;
     public bool f_hasClearedOnce = false;
+    internal uint lastPlayedLevel;
 }
 
 [Serializable]
@@ -119,6 +120,8 @@ public class RuntimeData
 {
     public string previousSceneName;
     public int currentScore = 0;
+    public LevelData currentLevel;
+    public int dogs = 3;
 }
 
 [Serializable]

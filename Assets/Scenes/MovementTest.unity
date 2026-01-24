@@ -670,7 +670,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2310119243919355970, guid: 4b4fa6d83fba9014c8ee86f90327ff13, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b4fa6d83fba9014c8ee86f90327ff13, type: 3}
@@ -4471,7 +4472,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
   timerText: {fileID: 712056206}
-  initialTime: 20
 --- !u!114 &1503405222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4488,7 +4488,6 @@ MonoBehaviour:
   distance: 1.3
   speed: 0.03
   DogPrefab: {fileID: 4894523241374472781, guid: 533427b112b909c5590cedf67cac5f5b, type: 3}
-  initialDogCount: 3
 --- !u!1 &1709043847
 GameObject:
   m_ObjectHideFlags: 0

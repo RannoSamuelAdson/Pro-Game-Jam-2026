@@ -23,6 +23,10 @@ public class PuzzleController : MonoBehaviour
         PuzzleSuccess();
     }
 
+    public void SetPuzzles(GameObject[] newPuzzles)
+    {
+        puzzles = newPuzzles;
+    }
     public void PuzzleSuccess()
     {
         OnLeavePuzzle?.Invoke(true);

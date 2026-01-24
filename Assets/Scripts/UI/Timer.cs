@@ -11,7 +11,7 @@ public class Timer : MonoBehaviour
     // when timer runs 0 it will send an action saying everything is over we are all dead
     // when it feels like it it will either play some sound effect or mess with lantern lights (TODO)
 
-    [SerializeField] private float initialTime = 20f; // TODO: unhardcode!!!!!!!
+    private float initialTime; 
     private float gameTimer;
     bool timerActive;
     private GameState gameState;
@@ -19,8 +19,14 @@ public class Timer : MonoBehaviour
     {
         GameController.ChangeGameState += HandleGameState;
         PuzzleController.OnLeavePuzzle += ResetTimer;
+        LevelChanger.OnGameplayLevelLoaded += SetupLevel;
     }
-
+    private void SetupLevel(LevelData data)
+    {
+        initialTime = data.timer;
+        gameTimer = initialTime;
+        UpdateTimerDisplay(gameTimer);
+    }
     private void HandleGameState(GameState state)
     {
         gameState = state;
@@ -41,18 +47,13 @@ public class Timer : MonoBehaviour
     {
         GameController.ChangeGameState -= HandleGameState;
         PuzzleController.OnLeavePuzzle -= ResetTimer;
+        LevelChanger.OnGameplayLevelLoaded -= SetupLevel;
     }
 
     private void ResetTimer(bool finished)
     {
         if (finished)
             gameTimer = initialTime;
-    }
-
-    void Start()
-    {
-        gameTimer = initialTime;
-        UpdateTimerDisplay(gameTimer);
     }
 
     void Update()

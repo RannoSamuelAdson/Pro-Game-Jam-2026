@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using UnityEngine;
 
@@ -8,19 +9,21 @@ public class GameplayMusic : MonoBehaviour
     private int currentParam;
     private void Awake()
     {
-        InitializeMusic();
+        
     }
 
     private void OnEnable()
     {
         //LevelProgressHandler.UpdateProgressTarget += UpdateTarget;
         //PlayerScore.OnScoreUpdated += CheckScore;
+        LevelChanger.OnGameplayLevelLoaded += SetupLevel;
     }
 
     private void OnDisable()
     {
         //LevelProgressHandler.UpdateProgressTarget -= UpdateTarget;
         //PlayerScore.OnScoreUpdated -= CheckScore;
+        LevelChanger.OnGameplayLevelLoaded -= SetupLevel;
     }
 
     private void CheckScore(int score)
@@ -37,14 +40,15 @@ public class GameplayMusic : MonoBehaviour
         targetScore = val / 5;
     }
 
-    private void InitializeMusic()
+    private void SetupLevel(LevelData data)
     {
-        AudioManager.Instance.InitializeMusic(FMODEvents.Instance.GameplaySong);
-        Debug.Log("music stasrt?");
+        InitializeMusic(data.levelTheme);
     }
 
-    private void Start()
+    private void InitializeMusic(EventReference song)
     {
+        AudioManager.Instance.InitializeMusic(song);
+        Debug.Log("music stasrt?");
         AudioManager.Instance.StartMusic();
         Debug.Log("msuic play");
     }
