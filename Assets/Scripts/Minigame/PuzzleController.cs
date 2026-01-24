@@ -5,8 +5,8 @@ public class PuzzleController : MonoBehaviour
 {
     [SerializeField] private GameObject[] puzzles;
     private DraggablePiece[] pieces;
-    public static Action OnPuzzleCompleted; // bool is success state
-    private bool puzzleSolved;
+    public static Action<bool> OnLeavePuzzle; // bool is success state, true: clear, false: left
+    private bool puzzleSolved = true; // true by default so a new puzzle gets spawned
 
     // TODO - maybe delay hiding the gameobject on success
 
@@ -25,14 +25,20 @@ public class PuzzleController : MonoBehaviour
 
     public void PuzzleSuccess()
     {
-        OnPuzzleCompleted?.Invoke();
+        OnLeavePuzzle?.Invoke(true);
     }
 
     private void OnEnable()
     {
-        Instantiate(puzzles[UnityEngine.Random.Range(0, puzzles.Length)], transform.GetChild(0));
+        if (puzzleSolved)
+        {
+            Instantiate(puzzles[UnityEngine.Random.Range(0, puzzles.Length)], transform.GetChild(0));
+            puzzleSolved = false;
+        }
+
         pieces = transform.GetComponentsInChildren<DraggablePiece>();
         GameController.ChangeGameState += OnPuzzleEnd;
+        InputHandler.OnPuzzleBack += ClosePuzzle;
     }
 
     private void OnPuzzleEnd(GameState state)
@@ -42,11 +48,18 @@ public class PuzzleController : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+    public void ClosePuzzle()
+    {
+        OnLeavePuzzle?.Invoke(false);
+    }
 
     private void OnDisable()
     {
-        Destroy(transform.GetChild(0).GetChild(0).gameObject); // destroy old puzzle
-        puzzleSolved = false;
+        if (puzzleSolved)
+        {
+            Destroy(transform.GetChild(0).GetChild(0).gameObject); // destroy old puzzle
+        }
         GameController.ChangeGameState -= OnPuzzleEnd;
+        InputHandler.OnPuzzleBack -= ClosePuzzle;
     }
 }

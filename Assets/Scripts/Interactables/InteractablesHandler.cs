@@ -24,7 +24,7 @@ public class InteractablesHandler : MonoBehaviour
     {
         InteractableObject.CloseToObject += HandleBeingClose;
         InputHandler.OnInteractInput += HandleInteract;
-        PuzzleController.OnPuzzleCompleted += OnEndPuzzle;
+        PuzzleController.OnLeavePuzzle += OnEndPuzzle;
         Timer.OnTimerEnd += OnFailPuzzle;
     }
 
@@ -33,7 +33,7 @@ public class InteractablesHandler : MonoBehaviour
         InteractableObject.CloseToObject += HandleBeingClose;
         InteractableObject.RegisterObject -= AddObject;
         InputHandler.OnInteractInput -= HandleInteract;
-        PuzzleController.OnPuzzleCompleted -= OnEndPuzzle;
+        PuzzleController.OnLeavePuzzle -= OnEndPuzzle;
         Timer.OnTimerEnd -= OnFailPuzzle;
     }
 
@@ -55,9 +55,10 @@ public class InteractablesHandler : MonoBehaviour
             Debug.LogWarning($"Walked away from {obj.name}, even though current selected is {currentSelectedObject.name}");
     }
 
-    // when the puzzle is either solved properly or failed. success specifies that
-    private void OnEndPuzzle()
+    // when the puzzle is either solved properly or quit. bool specifies that
+    private void OnEndPuzzle(bool finished)
     {
+        if (!finished) return;
         interactableObjects.Remove(currentSelectedObject);
         activatedObjects.Remove(currentSelectedObject);
         currentSelectedObject.DeactivateItem(true);

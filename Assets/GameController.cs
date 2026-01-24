@@ -5,13 +5,13 @@ public class GameController : MonoBehaviour
 {
     public static event Action<GameState> ChangeGameState;
     private GameState currentState;
-    public DogController dogController; 
+    public DogController dogController;
     private int dogs = 3; // three dogs,TODO: unify with other dog logic
     private void OnEnable()
     {
         LevelChanger.OnFadeInFinished += StartGame;
         InteractablesHandler.OpenPuzzleMenu += EnterPuzzleMode;
-        PuzzleController.OnPuzzleCompleted += LeavePuzzleMode;
+        PuzzleController.OnLeavePuzzle += LeavePuzzleMode;
         ChangeGameState += HandleNewState;
         Timer.OnTimerEnd += HandleTimerEnd;
     }
@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
         LevelChanger.OnFadeInFinished -= StartGame;
         ChangeGameState -= HandleNewState;
         InteractablesHandler.OpenPuzzleMenu -= EnterPuzzleMode;
-        PuzzleController.OnPuzzleCompleted -= LeavePuzzleMode;
+        PuzzleController.OnLeavePuzzle -= LeavePuzzleMode;
         Timer.OnTimerEnd -= HandleTimerEnd;
     }
 
@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour
             ChangeGameState.Invoke(GameState.Death);
             return;
         }
-        LeavePuzzleMode();
+        LeavePuzzleMode(true);
     }
 
     private void EnterPuzzleMode()
@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour
         ChangeGameState?.Invoke(GameState.Puzzle);
     }
 
-    private void LeavePuzzleMode()
+    private void LeavePuzzleMode(bool finished)
     {
         ChangeGameState?.Invoke(GameState.Active);
     }

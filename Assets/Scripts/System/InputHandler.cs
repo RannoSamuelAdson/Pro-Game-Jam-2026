@@ -5,10 +5,12 @@ using UnityEngine.InputSystem;
 public class InputHandler : MonoBehaviour
 {
     public static event Action<Vector2, bool> OnMoveInput;
-    public static event Action OnPauseInput; // bool is if paused or not, true is paused
+    public static event Action OnPauseInput;
+    public static event Action OnPuzzleBack;
     public static event Action OnInteractInput; 
     private bool isPaused = false;
     private bool inputEnabled = false;
+    private bool puzzleMode = false;
     InputAction movement;
     InputAction pause;
     InputAction interact;
@@ -55,13 +57,17 @@ public class InputHandler : MonoBehaviour
         {
             case GameState.Puzzle:
                 inputEnabled = false;
+                puzzleMode = true;
+                OnMoveInput?.Invoke(Vector2.zero, false); // force stop
                 break;
             case GameState.Death:
             case GameState.Inactive:
                 inputEnabled = false;
+                puzzleMode = false;
                 break;
             case GameState.Active:
                 inputEnabled = true;
+                puzzleMode = false;
                 break;
             default:
                 Debug.LogWarning($"Invalid state {inputEnabled}!");
@@ -76,6 +82,11 @@ public class InputHandler : MonoBehaviour
 
     private void OnPause(InputAction.CallbackContext context)
     {
+        if (puzzleMode)
+        {
+            OnPuzzleBack?.Invoke();
+            return;
+        }
         if (!inputEnabled) return;
         OnPauseInput?.Invoke();
     }

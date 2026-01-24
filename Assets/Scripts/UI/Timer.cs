@@ -18,7 +18,7 @@ public class Timer : MonoBehaviour
     private void OnEnable()
     {
         GameController.ChangeGameState += HandleGameState;
-        PuzzleController.OnPuzzleCompleted += ResetTimer;
+        PuzzleController.OnLeavePuzzle += ResetTimer;
     }
 
     private void HandleGameState(GameState state)
@@ -40,12 +40,13 @@ public class Timer : MonoBehaviour
     private void OnDisable()
     {
         GameController.ChangeGameState -= HandleGameState;
-        PuzzleController.OnPuzzleCompleted -= ResetTimer;
+        PuzzleController.OnLeavePuzzle -= ResetTimer;
     }
 
-    private void ResetTimer()
+    private void ResetTimer(bool finished)
     {
-        gameTimer = initialTime;
+        if (finished)
+            gameTimer = initialTime;
     }
 
     void Start()
