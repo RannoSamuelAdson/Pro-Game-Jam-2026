@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{b669b2ab-a0b4-44b0-b634-34b181a67a9d}">
+		<property name="assetPath">
+			<value>SFX/FoostepsImports/Footsteps, Human, Boots, Carpet, Wood, Walk, Close SND125710 S00.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.65122916666666664</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{68d1ed9e-8091-45e0-aaa4-dc58aeb6d6ab}</destination>
+		</relationship>
+	</object>
+</objects>
