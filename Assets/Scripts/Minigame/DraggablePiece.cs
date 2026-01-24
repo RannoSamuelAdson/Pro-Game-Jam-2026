@@ -1,57 +1,142 @@
+using System;
+using Unity.VectorGraphics;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class DraggablePiece : MonoBehaviour
+public class DraggablePiece : MonoBehaviour,
+    IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
+    private RectTransform rectTransform;
+    private Canvas canvas;
     private bool isDragging;
-    private Vector3 offset;
-    private Camera cam;
-    
-    [Header("Snapping")]
-    public Transform targetPosition;
-    public float snapDistance = 0.5f;
-    public bool isSnapped;
+    private PuzzlePieceSpot currentSnap;
 
-    void Start()
+
+    public bool isCorrect = false;
+
+    private Vector2 offset;
+    public PuzzlePieceSpot CorrectTarget;
+    public float snapDistance = 50f; // pixels
+    private PuzzlePieceSpot[] snapTargets;
+
+    void TrySnap()
     {
-        cam = Camera.main;
+        foreach (PuzzlePieceSpot snapTarget in snapTargets) {
+
+            
+            float distance = Vector2.Distance(
+                rectTransform.transform.position,
+                snapTarget.transform.position
+            );
+
+            if (distance <= snapDistance)
+            {
+                //Debug.Log("Snapping");
+                if (snapTarget.IsOccupied) 
+                {
+                    SwitchPuzzlePieces(snapTarget);
+                    return;
+                }
+                //Debug.Log("Ordinary Sanp");
+                snapTarget.IsOccupied = true;
+                snapTarget.currentPuzzlePiece = this;
+                
+                if (currentSnap != null) 
+                { 
+                    currentSnap.currentPuzzlePiece = null;
+                    currentSnap.IsOccupied = false;
+                }
+
+                currentSnap = snapTarget;
+                rectTransform.transform.position = snapTarget.transform.position;
+
+                if (snapTarget == CorrectTarget) isCorrect = true;
+
+                return;
+            }
+
+        }
+        if (currentSnap != null)
+        {
+            currentSnap.IsOccupied = false;
+            currentSnap = null;
+        }
     }
 
-    void OnMouseDown()
+    void SwitchPuzzlePieces(PuzzlePieceSpot newTarget)
     {
-        Vector3 mouseWorldPos = cam.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPos.z = 0f;
+        DraggablePiece otherPiece = newTarget.currentPuzzlePiece;
+        
+        
+        otherPiece.currentSnap = currentSnap; 
 
-        offset = transform.position - mouseWorldPos;
+        
+
+        if (currentSnap != null) 
+        {         
+            otherPiece.rectTransform.transform.position = currentSnap.transform.position;
+        }
+        else
+        {
+            otherPiece.rectTransform.transform.position = rectTransform.transform.position;
+        }
+
+        rectTransform.transform.position = newTarget.transform.position;
+        newTarget.currentPuzzlePiece = this;
+        currentSnap = newTarget;
+
+        otherPiece.rectTransform.SetAsLastSibling();
+
+    }
+
+    void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+        canvas = GetComponentInParent<Canvas>();
+    }
+    private void OnEnable()
+    {
+        snapTargets = UnityEngine.Object.FindObjectsByType<PuzzlePieceSpot>(FindObjectsSortMode.None);
+
+    }
+    private void Update()
+    {
+    }
+    public void OnPointerDown(PointerEventData eventData)
+    {
         isDragging = true;
+        isCorrect = false;
+
+        rectTransform.SetAsLastSibling();
+
+        // Convert mouse position to local UI space
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            rectTransform,
+            eventData.position,
+            eventData.pressEventCamera,
+            out offset
+        );
     }
 
-    void OnMouseUp()
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (!isDragging) return;
+
+        Vector2 localPoint;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            rectTransform.parent as RectTransform,
+            eventData.position,
+            eventData.pressEventCamera,
+            out localPoint
+        );
+
+        rectTransform.localPosition = localPoint - offset;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
     {
         isDragging = false;
         TrySnap();
     }
 
-    void Update()
-    {
-        if (!isDragging) return;
-
-        Vector3 mouseWorldPos = cam.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPos.z = 0f;
-
-        transform.position = mouseWorldPos + offset;
-    }
-
-
-    void TrySnap()
-    {
-        if (isSnapped) return;
-
-        float distance = Vector3.Distance(transform.position, targetPosition.position);
-
-        if (distance <= snapDistance)
-        {
-            transform.position = targetPosition.position;
-            isSnapped = true;
-        }
-    }
 }
