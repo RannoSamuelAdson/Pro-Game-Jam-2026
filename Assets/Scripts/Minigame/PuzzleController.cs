@@ -6,7 +6,6 @@ public class PuzzleController : MonoBehaviour
 
     private DraggablePiece[] pieces;
     public static Action<bool> OnPuzzleCompleted; // bool is success state
-    public DraggablePiece[] pieces;
     private bool puzzleSolved;
 
     // TODO - lose condition, maybe delay hiding the gameobject on success
