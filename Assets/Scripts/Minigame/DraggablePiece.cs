@@ -1,4 +1,5 @@
 using System;
+using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -16,11 +17,11 @@ public class DraggablePiece : MonoBehaviour,
     private Vector2 offset;
     public PuzzlePieceSpot CorrectTarget;
     public float snapDistance = 50f; // pixels
-    public PuzzlePieceSpot[] snaptargets;
+    private PuzzlePieceSpot[] snapTargets;
 
     void TrySnap()
     {
-        foreach (PuzzlePieceSpot snapTarget in snaptargets) {
+        foreach (PuzzlePieceSpot snapTarget in snapTargets) {
 
             
             float distance = Vector2.Distance(
@@ -88,7 +89,11 @@ public class DraggablePiece : MonoBehaviour,
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
     }
+    private void OnEnable()
+    {
+        snapTargets = UnityEngine.Object.FindObjectsByType<PuzzlePieceSpot>(FindObjectsSortMode.None);
 
+    }
     private void Update()
     {
     }
