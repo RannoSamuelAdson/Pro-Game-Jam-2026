@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9126431208494887225}
-  - component: {fileID: 2692275961621896640}
+  - component: {fileID: 8544553548308755700}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: MovementAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2692275961621896640
+--- !u!114 &8544553548308755700
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,14 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2810635662028243138}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9df08fd867fbdb46bcf7d247333a521, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b8b95aee1f4c614aa4abf00e30f2c40, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FoodSpawn
-  goalpoints: []
-  foodPrefab: {fileID: 8281181839365187228, guid: 42993819e2640d948af12840ffcbc862, type: 3}
-  DragonFlySpawnFrequencyBase: 3
-  dragonFlyBaseSpeed: 3
-  humanSpawnRandomness: 0.5
-  humanSpeedRandomness: 0.2
-  currentAnchor: {fileID: 0}
-  speed: 3
+  m_EditorClassIdentifier: Assembly-CSharp::LightningAnchor
+  nextGoalPoint: {fileID: 0}

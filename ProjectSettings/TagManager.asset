@@ -18,7 +18,7 @@ TagManager:
   - Edges
   - 
   - NPC
-  - 
+  - Floor
   - 
   - 
   - 
@@ -48,6 +48,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 168911149
+    locked: 0
+  - name: Wall
+    uniqueID: 461278107
     locked: 0
   m_RenderingLayers:
   - Default

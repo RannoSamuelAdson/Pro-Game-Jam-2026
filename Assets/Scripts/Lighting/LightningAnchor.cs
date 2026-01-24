@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class FoodSpawnerAnchor : MonoBehaviour
+public class LightningAnchor : MonoBehaviour
 {
-    public FoodSpawnerAnchor nextGoalPoint;
+    public LightningAnchor nextGoalPoint;
     void OnDrawGizmos()
     {
         if (nextGoalPoint != null)

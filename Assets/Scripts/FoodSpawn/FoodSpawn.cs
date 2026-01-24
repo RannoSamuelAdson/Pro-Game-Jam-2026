@@ -15,7 +15,7 @@ public class FoodSpawn : MonoBehaviour
     public float humanSpawnRandomness = 0.5f;    // % variation (0.5 = 50%)
     public float humanSpeedRandomness = 0.2f;    // % variation (0.5 = 50%)
 
-    public FoodSpawnerAnchor currentAnchor; // Current target anchor
+    public LightningAnchor currentAnchor; // Current target anchor
     public float speed = 3f;
 
     private float nextSpawnTime;

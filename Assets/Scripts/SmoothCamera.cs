@@ -19,7 +19,12 @@ public class SmoothCamera : MonoBehaviour
     private float vertExtent;
     private float horzExtent;
 
+    [Header("Lightning Shake")]
+    public Lightning lightning;
+    public float shakeStrength = 0.15f;
+    public float shakeSpeed = 25f;
 
+    float shakeSeed;
     private void Start()
     {
         vertExtent = Camera.main.orthographicSize;
@@ -51,5 +56,31 @@ public class SmoothCamera : MonoBehaviour
 
         // Smoothly interpolate camera position
         transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+
+
+ 
+
+
+
+        // Apply lightning shake
+        if (lightning != null && lightning.isFlashingLight)
+        {
+            float noiseX = Mathf.PerlinNoise(Time.time * shakeSpeed, shakeSeed) - 0.5f;
+            float noiseY = Mathf.PerlinNoise(Time.time * shakeSpeed, shakeSeed + 10f) - 0.5f;
+
+            Vector3 shakeOffset = new Vector3(
+                noiseX * shakeStrength,
+                noiseY * shakeStrength,
+                0f
+            );
+
+            desiredPosition += shakeOffset;
+        }
+
+        transform.position = Vector3.Lerp(
+            transform.position,
+            desiredPosition,
+            smoothSpeed * Time.deltaTime
+        );
     }
 }

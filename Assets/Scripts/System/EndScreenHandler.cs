@@ -35,7 +35,7 @@ public class EndScreenHandler : MonoBehaviour
         LevelChanger.Instance.FadeToLevel("Credits");
     }
 
-    private void OnDisable()
+    private void OnDisable()   
     {
         if (disposable != null) disposable.Dispose();
     }
