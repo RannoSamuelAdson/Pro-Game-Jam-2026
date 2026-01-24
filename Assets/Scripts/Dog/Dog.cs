@@ -12,7 +12,7 @@ public class Dog : MonoBehaviour
     public void Init(float distance, float speed, GameObject followTarget)
     {
         _distance = distance;
-        _speed = speed;
+        _speed = Random.Range(0.02f, _speed);
         _followTarget = followTarget;
         Debug.Log("Dog spawn");
     }
