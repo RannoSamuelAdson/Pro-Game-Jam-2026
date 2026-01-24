@@ -5,9 +5,12 @@ public class GameController : MonoBehaviour
 {
     public static event Action<GameState> ChangeGameState;
     private GameState currentState;
+    private int dogs = 3; // three dogs,TODO: unify with other dog logic
     private void OnEnable()
     {
         LevelChanger.OnFadeInFinished += StartGame;
+        InteractablesHandler.OpenPuzzleMenu += EnterPuzzleMode;
+        PuzzleHandler.OnPuzzleCompleted += LeavePuzzleMode;
         ChangeGameState += HandleNewState;
     }
 
@@ -15,6 +18,27 @@ public class GameController : MonoBehaviour
     {
         LevelChanger.OnFadeInFinished -= StartGame;
         ChangeGameState -= HandleNewState;
+        InteractablesHandler.OpenPuzzleMenu -= EnterPuzzleMode;
+        PuzzleHandler.OnPuzzleCompleted -= LeavePuzzleMode;
+    }
+
+    private void EnterPuzzleMode()
+    {
+        ChangeGameState?.Invoke(GameState.Puzzle);
+    }
+
+    private void LeavePuzzleMode(bool success)
+    {
+        if (!success)
+        {
+            dogs--;
+            if (dogs <= 0) // should we game over on 0 dogs or -1 dogs?
+            {
+                ChangeGameState.Invoke(GameState.Death);
+                return;
+            }
+        }
+        ChangeGameState?.Invoke(GameState.Active);
     }
 
     private void HandleNewState(GameState state)
@@ -27,11 +51,15 @@ public class GameController : MonoBehaviour
             case GameState.Inactive:
                 Time.timeScale = 0f;
                 break;
+            case GameState.Puzzle:
+                Time.timeScale = 1f;
+                break;
             case GameState.Active:
                 Time.timeScale = 1f;
                 break;
             case GameState.Death:
                 Time.timeScale = 0f;
+                LevelChanger.Instance.FadeToLevel("Credits");
                 break;
         }
     }
@@ -52,5 +80,6 @@ public enum GameState
 {
     Inactive,
     Active,
+    Puzzle,
     Death
 }
