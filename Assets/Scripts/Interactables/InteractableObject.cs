@@ -6,13 +6,13 @@ public class InteractableObject : MonoBehaviour
     public static event Action<InteractableObject> RegisterObject;
     public static event Action<InteractableObject, bool> CloseToObject; // object, isClose
     private bool isActive = false;
+    private bool isPlayerClose;
     // maybe an array, objecthandler or w/e
     private GameObject toolTip;
     private void Start()
     {
         toolTip = transform.GetChild(0).gameObject;
         toolTip.SetActive(false);
-        Debug.Log("hi...");
         RegisterObject?.Invoke(this);
     }
 
@@ -22,6 +22,11 @@ public class InteractableObject : MonoBehaviour
         isActive = true;
         // TODO - show it visually somehow
         GetComponent<SpriteRenderer>().color = Color.yellow;
+        if (isPlayerClose)
+        {
+            CloseToObject.Invoke(this, true);
+            toolTip.SetActive(true);
+        }
     }
 
     public void DeactivateItem(bool success)
@@ -44,6 +49,7 @@ public class InteractableObject : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        isPlayerClose = true;
         if (isActive)
         {
             CloseToObject.Invoke(this, true);
@@ -53,6 +59,7 @@ public class InteractableObject : MonoBehaviour
 
     private void OnTriggerExit2D(UnityEngine.Collider2D collision)
     {
+        isPlayerClose = false;
         if (isActive)
         {
             toolTip.SetActive(false);

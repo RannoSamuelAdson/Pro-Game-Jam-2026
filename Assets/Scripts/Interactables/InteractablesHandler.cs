@@ -5,15 +5,18 @@ using UnityEngine;
 public class InteractablesHandler : MonoBehaviour
 {
     public static event Action OpenPuzzleMenu;
-    private List<InteractableObject> interactableObjects = new List<InteractableObject>();
+    private List<InteractableObject> interactableObjects = new();
     private InteractableObject currentSelectedObject;
+    private List<InteractableObject> activatedObjects = new();
     private float lastCheck;
     private float waitTime = 3f; // time to wait until new incident. could be randomized later.
+    private int maxActivatedObjects = 1; // can change if needed.
     private bool itemActivated = false; // hardcoded to one active situation atm
+    private bool inPuzzle = false;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        Debug.Log("Hello...");
         InteractableObject.RegisterObject += AddObject;
         lastCheck = Time.time;
     }
@@ -23,6 +26,7 @@ public class InteractablesHandler : MonoBehaviour
         InteractableObject.CloseToObject += HandleBeingClose;
         InputHandler.OnInteractInput += HandleInteract;
         PuzzleController.OnPuzzleCompleted += OnEndPuzzle;
+        Timer.OnTimerEnd += OnFailPuzzle;
     }
 
     private void OnDisable()
@@ -31,12 +35,15 @@ public class InteractablesHandler : MonoBehaviour
         InteractableObject.RegisterObject -= AddObject;
         InputHandler.OnInteractInput -= HandleInteract;
         PuzzleController.OnPuzzleCompleted -= OnEndPuzzle;
+        Timer.OnTimerEnd -= OnFailPuzzle;
     }
 
     private void HandleInteract()
     {
         if (currentSelectedObject == null) return;
+        inPuzzle = true;
         OpenPuzzleMenu?.Invoke();
+        
     }
 
     private void HandleBeingClose(InteractableObject obj, bool isClose)
@@ -51,14 +58,34 @@ public class InteractablesHandler : MonoBehaviour
     }
 
     // when the puzzle is either solved properly or failed. success specifies that
-    private void OnEndPuzzle(bool success)
+    private void OnEndPuzzle()
     {
         interactableObjects.Remove(currentSelectedObject);
-        currentSelectedObject.DeactivateItem(success);
+        activatedObjects.Remove(currentSelectedObject);
+        currentSelectedObject.DeactivateItem(true);
+        currentSelectedObject = null;
         itemActivated = false;
         lastCheck = Time.time;
+        inPuzzle = false;
     }
 
+    private void OnFailPuzzle()
+    {
+        if (itemActivated)
+        {
+            inPuzzle = false;
+            interactableObjects.Remove(currentSelectedObject);
+
+            foreach (var item in activatedObjects)
+            {
+                item.DeactivateItem(false);
+            }
+            activatedObjects = new(); // empty the list
+            itemActivated = false;
+            lastCheck = Time.time;
+            Debug.Log("puzzle failed...");
+        }
+    }
     private void AddObject(InteractableObject obj)
     {
         interactableObjects.Add(obj);
@@ -70,10 +97,12 @@ public class InteractablesHandler : MonoBehaviour
 
     private void Update()
     {
-        if (!itemActivated && lastCheck + waitTime < Time.time)
+        if (activatedObjects.Count < maxActivatedObjects && lastCheck + waitTime < Time.time)
         {
             if (interactableObjects.Count <= 0) return;
-            interactableObjects[UnityEngine.Random.Range(0, interactableObjects.Count)].ActivateItem(); // basic random activation logic
+            var obj = interactableObjects[UnityEngine.Random.Range(0, interactableObjects.Count)]; // basic random activation logic
+            obj.ActivateItem();
+            activatedObjects.Add(obj);
             itemActivated = true;
         }
     }

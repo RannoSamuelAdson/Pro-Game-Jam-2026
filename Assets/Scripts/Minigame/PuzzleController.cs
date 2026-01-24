@@ -3,20 +3,20 @@ using UnityEngine;
 
 public class PuzzleController : MonoBehaviour
 {
-
+    [SerializeField] private GameObject[] puzzles;
     private DraggablePiece[] pieces;
-    public static Action<bool> OnPuzzleCompleted; // bool is success state
+    public static Action OnPuzzleCompleted; // bool is success state
     private bool puzzleSolved;
 
-    // TODO - lose condition, maybe delay hiding the gameobject on success
+    // TODO - maybe delay hiding the gameobject on success
 
     // Update is called once per frame
     void Update()
     {
         if (puzzleSolved) return;
 
-        foreach (DraggablePiece piece in pieces) {
-
+        foreach (DraggablePiece piece in pieces)
+        {
             if (!piece.isCorrect) return;
         }
         puzzleSolved = true;
@@ -25,17 +25,28 @@ public class PuzzleController : MonoBehaviour
 
     public void PuzzleSuccess()
     {
-        OnPuzzleCompleted?.Invoke(true);
-        gameObject.SetActive(false);
+        OnPuzzleCompleted?.Invoke();
     }
 
-    public void PuzzleFail()
-    {
-        OnPuzzleCompleted?.Invoke(false);
-        gameObject.SetActive(false);
-    }
     private void OnEnable()
     {
-        pieces = UnityEngine.Object.FindObjectsByType<DraggablePiece>(FindObjectsSortMode.None);
+        Instantiate(puzzles[UnityEngine.Random.Range(0, puzzles.Length)], transform.GetChild(0));
+        pieces = transform.GetComponentsInChildren<DraggablePiece>();
+        GameController.ChangeGameState += OnPuzzleEnd;
+    }
+
+    private void OnPuzzleEnd(GameState state)
+    {
+        if (state == GameState.Active || state == GameState.Death)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void OnDisable()
+    {
+        Destroy(transform.GetChild(0).GetChild(0).gameObject); // destroy old puzzle
+        puzzleSolved = false;
+        GameController.ChangeGameState -= OnPuzzleEnd;
     }
 }

@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
         InteractablesHandler.OpenPuzzleMenu += EnterPuzzleMode;
         PuzzleController.OnPuzzleCompleted += LeavePuzzleMode;
         ChangeGameState += HandleNewState;
+        Timer.OnTimerEnd += HandleTimerEnd;
     }
 
     private void OnDisable()
@@ -20,6 +21,19 @@ public class GameController : MonoBehaviour
         ChangeGameState -= HandleNewState;
         InteractablesHandler.OpenPuzzleMenu -= EnterPuzzleMode;
         PuzzleController.OnPuzzleCompleted -= LeavePuzzleMode;
+        Timer.OnTimerEnd -= HandleTimerEnd;
+    }
+
+    private void HandleTimerEnd()
+    {
+        dogs--;
+        Debug.Log($"dog lost.. {dogs} left...");
+        if (dogs <= 0) // should we game over on 0 dogs or -1 dogs?
+        {
+            ChangeGameState.Invoke(GameState.Death);
+            return;
+        }
+        LeavePuzzleMode();
     }
 
     private void EnterPuzzleMode()
@@ -27,17 +41,8 @@ public class GameController : MonoBehaviour
         ChangeGameState?.Invoke(GameState.Puzzle);
     }
 
-    private void LeavePuzzleMode(bool success)
+    private void LeavePuzzleMode()
     {
-        if (!success)
-        {
-            dogs--;
-            if (dogs <= 0) // should we game over on 0 dogs or -1 dogs?
-            {
-                ChangeGameState.Invoke(GameState.Death);
-                return;
-            }
-        }
         ChangeGameState?.Invoke(GameState.Active);
     }
 
@@ -45,7 +50,7 @@ public class GameController : MonoBehaviour
     {
         Debug.Log($"Switching from state {currentState} to {state}.");
         currentState = state;
-        
+
         switch (currentState)
         {
             case GameState.Inactive:
@@ -59,7 +64,7 @@ public class GameController : MonoBehaviour
                 break;
             case GameState.Death:
                 Time.timeScale = 0f;
-                LevelChanger.Instance.FadeToLevel("Credits");
+                LevelChanger.Instance.FadeToLevel("LoseScenario");
                 break;
         }
     }
