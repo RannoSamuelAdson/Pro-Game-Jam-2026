@@ -19,7 +19,9 @@ public class GameController : MonoBehaviour
 
     private void HandleNewState(GameState state)
     {
+        Debug.Log($"Switching from state {currentState} to {state}.");
         currentState = state;
+        
         switch (currentState)
         {
             case GameState.Inactive:

@@ -40,16 +40,16 @@ public class SmoothCamera : MonoBehaviour
         var v3 = target.position + offset;
         v3.x = Mathf.Clamp(v3.x, minX, maxX);
         v3.y = Mathf.Clamp(v3.y, minY, maxY);
-        transform.position = v3;
+
 
         // Desired position before clamping
-        /*Vector3 desiredPosition = target.position + offset;
+        Vector3 desiredPosition = target.position + offset;
 
         // Clamp to world bounds (only X and Z)
-        desiredPosition.x = Mathf.Clamp(desiredPosition.x, minBounds.x, maxBounds.x);
-        desiredPosition.y = Mathf.Clamp(desiredPosition.y, minBounds.y, maxBounds.y);
+        //desiredPosition.x = Mathf.Clamp(desiredPosition.x, minBounds.x, maxBounds.x);
+        //desiredPosition.y = Mathf.Clamp(desiredPosition.y, minBounds.y, maxBounds.y);
 
         // Smoothly interpolate camera position
-        transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);*/
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
     }
 }
