@@ -48,9 +48,7 @@ public class GameplayMusic : MonoBehaviour
     private void InitializeMusic(EventReference song)
     {
         AudioManager.Instance.InitializeMusic(song);
-        Debug.Log("music stasrt?");
         AudioManager.Instance.StartMusic();
-        Debug.Log("msuic play");
     }
 
     // code from prev game for fading in parameters

@@ -33,7 +33,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnPlayPressed()
     {
-        LevelChanger.Instance.FadeToLevel("MovementTest");
+        LevelChanger.Instance.FadeToLevel("LightingTest");
     }
 
     public void OnQuitPressed()
