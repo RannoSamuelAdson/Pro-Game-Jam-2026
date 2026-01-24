@@ -6,16 +6,17 @@ public class InputHandler : MonoBehaviour
 {
     public static event Action<Vector2, bool> OnMoveInput;
     public static event Action OnPauseInput; // bool is if paused or not, true is paused
-    public static event Action<bool> OnJumpInput; // true - pressed, false - released
+    public static event Action OnInteractInput; 
     private bool isPaused = false;
     private bool inputEnabled = false;
     InputAction movement;
     InputAction pause;
+    InputAction interact;
     private void Awake()
     {
         movement = InputSystem.actions.FindAction("Movement");
         pause = InputSystem.actions.FindAction("Pause");
-        Debug.Log(movement);
+        interact = InputSystem.actions.FindAction("Interact");
     }
 
     private void OnEnable()
@@ -23,6 +24,7 @@ public class InputHandler : MonoBehaviour
         movement.canceled += OnMovement;
         movement.performed += OnMovement;
         pause.performed += OnPause;
+        interact.performed += OnInteract;
         movement.Enable();
         pause.Enable();
         PauseMenu.OnPauseGame += SetPaused;
@@ -34,17 +36,26 @@ public class InputHandler : MonoBehaviour
         movement.performed -= OnMovement;
         movement.canceled -= OnMovement;
         pause.performed -= OnPause;
+        interact.performed -= OnInteract;
         movement.Disable();
         pause.Disable();
         PauseMenu.OnPauseGame -= SetPaused;
         GameController.ChangeGameState -= ChangeInputByState;
     }
 
+    private void OnInteract(InputAction.CallbackContext context)
+    {
+        if (!inputEnabled) return;
+        OnInteractInput?.Invoke();
+    }
 
     private void ChangeInputByState(GameState state)
     {
         switch (state)
         {
+            case GameState.Puzzle:
+                inputEnabled = false;
+                break;
             case GameState.Death:
             case GameState.Inactive:
                 inputEnabled = false;
@@ -71,7 +82,6 @@ public class InputHandler : MonoBehaviour
 
     private void OnMovement(InputAction.CallbackContext context)
     {
-        Debug.Log("hi");
         if (isPaused || !inputEnabled) return;
         var moveDir = context.ReadValue<Vector2>();
         if (context.started || context.performed)
