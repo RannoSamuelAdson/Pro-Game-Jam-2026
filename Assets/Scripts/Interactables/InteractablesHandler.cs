@@ -22,7 +22,7 @@ public class InteractablesHandler : MonoBehaviour
     {
         InteractableObject.CloseToObject += HandleBeingClose;
         InputHandler.OnInteractInput += HandleInteract;
-        PuzzleHandler.OnPuzzleCompleted += OnEndPuzzle;
+        PuzzleController.OnPuzzleCompleted += OnEndPuzzle;
     }
 
     private void OnDisable()
@@ -30,7 +30,7 @@ public class InteractablesHandler : MonoBehaviour
         InteractableObject.CloseToObject += HandleBeingClose;
         InteractableObject.RegisterObject -= AddObject;
         InputHandler.OnInteractInput -= HandleInteract;
-        PuzzleHandler.OnPuzzleCompleted -= OnEndPuzzle;
+        PuzzleController.OnPuzzleCompleted -= OnEndPuzzle;
     }
 
     private void HandleInteract()

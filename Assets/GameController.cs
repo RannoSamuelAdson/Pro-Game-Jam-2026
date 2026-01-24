@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
     {
         LevelChanger.OnFadeInFinished += StartGame;
         InteractablesHandler.OpenPuzzleMenu += EnterPuzzleMode;
-        PuzzleHandler.OnPuzzleCompleted += LeavePuzzleMode;
+        PuzzleController.OnPuzzleCompleted += LeavePuzzleMode;
         ChangeGameState += HandleNewState;
     }
 
@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
         LevelChanger.OnFadeInFinished -= StartGame;
         ChangeGameState -= HandleNewState;
         InteractablesHandler.OpenPuzzleMenu -= EnterPuzzleMode;
-        PuzzleHandler.OnPuzzleCompleted -= LeavePuzzleMode;
+        PuzzleController.OnPuzzleCompleted -= LeavePuzzleMode;
     }
 
     private void EnterPuzzleMode()
