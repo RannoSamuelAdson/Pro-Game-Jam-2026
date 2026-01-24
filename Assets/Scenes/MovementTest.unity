@@ -2015,6 +2015,7 @@ GameObject:
   - component: {fileID: 1503405219}
   - component: {fileID: 1503405220}
   - component: {fileID: 1503405221}
+  - component: {fileID: 1503405222}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2061,6 +2062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f33eb90b8627d4eaf7242c046a44df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
+  dogController: {fileID: 1503405222}
 --- !u!114 &1503405219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2100,6 +2102,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Timer
   timerText: {fileID: 712056206}
   initialTime: 20
+--- !u!114 &1503405222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503405215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350c74fb672d4f666a288e43dea64f98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DogController
+  followTarget: {fileID: 2134055818}
+  distance: 1.3
+  speed: 0.03
+  DogPrefab: {fileID: 4894523241374472781, guid: 533427b112b909c5590cedf67cac5f5b, type: 3}
+  initialDogCount: 3
 --- !u!1 &1709043847
 GameObject:
   m_ObjectHideFlags: 0
@@ -3207,6 +3226,11 @@ Transform:
   - {fileID: 1827707828}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2134055818 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9170597145412604231, guid: 1430e28ae63de794e9e0c2afd77c38b1, type: 3}
+  m_PrefabInstance: {fileID: 770589276066259736}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2140017687
 GameObject:
   m_ObjectHideFlags: 0
