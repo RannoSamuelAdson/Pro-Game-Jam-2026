@@ -5,6 +5,7 @@ public class GameController : MonoBehaviour
 {
     public static event Action<GameState> ChangeGameState;
     private GameState currentState;
+    public DogController dogController; 
     private int dogs = 3; // three dogs,TODO: unify with other dog logic
     private void OnEnable()
     {
@@ -27,6 +28,7 @@ public class GameController : MonoBehaviour
     private void HandleTimerEnd()
     {
         dogs--;
+        dogController.removeDog();
         Debug.Log($"dog lost.. {dogs} left...");
         if (dogs <= 0) // should we game over on 0 dogs or -1 dogs?
         {
