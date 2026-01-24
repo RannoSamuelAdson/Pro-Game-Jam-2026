@@ -71,13 +71,6 @@ public class HungerBar : MonoBehaviour
         Debug.Log("Time's up! Game paused.");
     }
 
-    public void RestartGame()
-    {
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Player.SetGamePaused(false);
-        restartPanel.SetActive(false);
-    }
     private void Quit() { Application.Quit(); }
     private void Restart() { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); }
 }
