@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PuzzleController : MonoBehaviour
 {
-    public DraggablePiece[] pieces;
+    private DraggablePiece[] pieces;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,5 +18,9 @@ public class PuzzleController : MonoBehaviour
             if (!piece.isCorrect) return;
         }
         Debug.Log("CORRECT!!");
+    }
+    private void OnEnable()
+    {
+        pieces = UnityEngine.Object.FindObjectsByType<DraggablePiece>(FindObjectsSortMode.None);
     }
 }
