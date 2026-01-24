@@ -12,8 +12,8 @@ public class Settings : MonoBehaviour
     void Start()
     {
         // Initialize UI with current volume
-        volumeSlider.value = AudioListener.volume;
-        muteToggle.isOn = AudioListener.volume <= 0f;
+        volumeSlider.value = AudioManager.Instance.MasterVolume;
+        muteToggle.isOn = AudioManager.Instance.MasterVolume <= 0f;
 
         // Add listeners
         volumeSlider.onValueChanged.AddListener(SetVolume);
@@ -40,6 +40,7 @@ public class Settings : MonoBehaviour
         {
             lastVolume = AudioListener.volume > 0f ? AudioListener.volume : lastVolume;
             AudioListener.volume = 0f;
+            Debug.Log(lastVolume);
         }
         else
         {

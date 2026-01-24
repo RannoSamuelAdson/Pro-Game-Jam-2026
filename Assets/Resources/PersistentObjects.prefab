@@ -183,22 +183,22 @@ MonoBehaviour:
     Path: event:/UI/uiHover
   <MenuMusic>k__BackingField:
     Guid:
-      Data1: 816372890
-      Data2: 1253357527
-      Data3: 1381547178
-      Data4: -1145585755
+      Data1: 1454315384
+      Data2: 1268593857
+      Data3: -1216166235
+      Data4: 1742192061
     Path: event:/Music/MenuMusic
   <CreditsMusic>k__BackingField:
     Guid:
-      Data1: 816372890
-      Data2: 1253357527
-      Data3: 1381547178
-      Data4: -1145585755
+      Data1: 1454315384
+      Data2: 1268593857
+      Data3: -1216166235
+      Data4: 1742192061
     Path: event:/Music/MenuMusic
   <GameplaySong>k__BackingField:
     Guid:
-      Data1: 816372890
-      Data2: 1253357527
-      Data3: 1381547178
-      Data4: -1145585755
+      Data1: 1454315384
+      Data2: 1268593857
+      Data3: -1216166235
+      Data4: 1742192061
     Path: event:/Music/MenuMusic

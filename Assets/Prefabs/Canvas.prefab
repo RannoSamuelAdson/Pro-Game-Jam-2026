@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 754859349144474946}
   - component: {fileID: 8971855480142547219}
+  - component: {fileID: 6668494058951852085}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -91,6 +92,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6668494058951852085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138365716595347581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04662391cc173554084521e78352ac7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VolumeSlider
+  volumeType: 0
 --- !u!1 &490782791463671990
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,6 +407,7 @@ GameObject:
   - component: {fileID: 1289640485559635255}
   - component: {fileID: 8561403666430149186}
   - component: {fileID: 25843757226996427}
+  - component: {fileID: 3850186046231253735}
   m_Layer: 5
   m_Name: Quit (1)
   m_TagString: Untagged
@@ -502,6 +517,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3850186046231253735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020118182248560914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1158777e65d88649a3f7d05338561fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScalableButton
+  type: 0
+  disableSelectAudio: 0
+  scaleBy: 0.1
+  duration: 0.15
+  target: {fileID: 0}
 --- !u!1 &1061291526687366023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,6 +1114,7 @@ GameObject:
   - component: {fileID: 415602500589170126}
   - component: {fileID: 1283609328961970707}
   - component: {fileID: 7088842415436820161}
+  - component: {fileID: 5246243237000444230}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -1206,6 +1239,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenMenuButton
   Menu: {fileID: 824248221608973071}
   button: {fileID: 1283609328961970707}
+--- !u!114 &5246243237000444230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808390583174911482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1158777e65d88649a3f7d05338561fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScalableButton
+  type: 0
+  disableSelectAudio: 0
+  scaleBy: 0.1
+  duration: 0.15
+  target: {fileID: 0}
 --- !u!1 &1856179427794889012
 GameObject:
   m_ObjectHideFlags: 0
@@ -11849,6 +11899,7 @@ GameObject:
   - component: {fileID: 8768991692718758288}
   - component: {fileID: 3314475569012360131}
   - component: {fileID: 8056690826036240174}
+  - component: {fileID: 7831828331515053126}
   m_Layer: 5
   m_Name: Return
   m_TagString: Untagged
@@ -11958,6 +12009,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7831828331515053126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3326652501286828475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1158777e65d88649a3f7d05338561fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScalableButton
+  type: 0
+  disableSelectAudio: 0
+  scaleBy: 0.1
+  duration: 0.15
+  target: {fileID: 0}
 --- !u!1 &3404762991657152860
 GameObject:
   m_ObjectHideFlags: 0
@@ -12695,6 +12763,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2281279698322805469}
   - component: {fileID: 2108642633005403086}
+  - component: {fileID: 6603940430938651388}
   m_Layer: 5
   m_Name: ToggleMute
   m_TagString: Untagged
@@ -12770,6 +12839,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &6603940430938651388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4482216076053283816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1158777e65d88649a3f7d05338561fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScalableButton
+  type: 0
+  disableSelectAudio: 0
+  scaleBy: 0.1
+  duration: 0.15
+  target: {fileID: 0}
 --- !u!1 &4483537801347651837
 GameObject:
   m_ObjectHideFlags: 0
@@ -13056,6 +13142,7 @@ GameObject:
   - component: {fileID: 8435975649434312711}
   - component: {fileID: 795079916381016735}
   - component: {fileID: 5681879795813705430}
+  - component: {fileID: 4136588034268485177}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -13165,6 +13252,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4136588034268485177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4606895374541452529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1158777e65d88649a3f7d05338561fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScalableButton
+  type: 0
+  disableSelectAudio: 0
+  scaleBy: 0.1
+  duration: 0.15
+  target: {fileID: 0}
 --- !u!1 &5417858803275898611
 GameObject:
   m_ObjectHideFlags: 0
@@ -13787,6 +13891,7 @@ GameObject:
   - component: {fileID: 3827851203438823291}
   - component: {fileID: 3069290228270344705}
   - component: {fileID: 2838095886678017188}
+  - component: {fileID: 1703684395407781947}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -13896,6 +14001,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1703684395407781947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5914629040540059285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1158777e65d88649a3f7d05338561fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScalableButton
+  type: 1
+  disableSelectAudio: 0
+  scaleBy: 0.1
+  duration: 0.15
+  target: {fileID: 0}
 --- !u!1 &5947716786980249477
 GameObject:
   m_ObjectHideFlags: 0
@@ -14319,6 +14441,7 @@ GameObject:
   - component: {fileID: 5620134640256821745}
   - component: {fileID: 7589325082267889236}
   - component: {fileID: 8474031335801970297}
+  - component: {fileID: 5603907864843118454}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -14428,6 +14551,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5603907864843118454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6656685032429129612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1158777e65d88649a3f7d05338561fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScalableButton
+  type: 0
+  disableSelectAudio: 0
+  scaleBy: 0.1
+  duration: 0.15
+  target: {fileID: 0}
 --- !u!1 &6657811509575458861
 GameObject:
   m_ObjectHideFlags: 0
@@ -15838,6 +15978,7 @@ GameObject:
   - component: {fileID: 1666860014386046962}
   - component: {fileID: 8661721510917968153}
   - component: {fileID: 1268628919274701169}
+  - component: {fileID: 7054805095945783250}
   m_Layer: 5
   m_Name: Start Game
   m_TagString: Untagged
@@ -15947,6 +16088,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7054805095945783250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7998826634731387952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1158777e65d88649a3f7d05338561fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScalableButton
+  type: 0
+  disableSelectAudio: 0
+  scaleBy: 0.1
+  duration: 0.15
+  target: {fileID: 0}
 --- !u!1 &8099386485429104340
 GameObject:
   m_ObjectHideFlags: 0
