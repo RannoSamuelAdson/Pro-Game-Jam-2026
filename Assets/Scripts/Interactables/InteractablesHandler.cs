@@ -12,7 +12,6 @@ public class InteractablesHandler : MonoBehaviour
     private float waitTime = 3f; // time to wait until new incident. could be randomized later.
     private int maxActivatedObjects = 1; // can change if needed.
     private bool itemActivated = false; // hardcoded to one active situation atm
-    private bool inPuzzle = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -41,7 +40,6 @@ public class InteractablesHandler : MonoBehaviour
     private void HandleInteract()
     {
         if (currentSelectedObject == null) return;
-        inPuzzle = true;
         OpenPuzzleMenu?.Invoke();
         
     }
@@ -66,14 +64,12 @@ public class InteractablesHandler : MonoBehaviour
         currentSelectedObject = null;
         itemActivated = false;
         lastCheck = Time.time;
-        inPuzzle = false;
     }
 
     private void OnFailPuzzle()
     {
         if (itemActivated)
         {
-            inPuzzle = false;
             interactableObjects.Remove(currentSelectedObject);
 
             foreach (var item in activatedObjects)

@@ -74,7 +74,7 @@ public class BootAnim : MonoBehaviour
         if (isReady && animOver && canSkip)
         {
             isReady = false; // no need to call it multiple times
-            LevelChanger.Instance.FadeToLevel("MainScene");
+            LevelChanger.Instance.FadeToLevel("MainMenu");
         }
 
         if (Touch.activeTouches.Count > 0)
