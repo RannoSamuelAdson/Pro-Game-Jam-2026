@@ -34,12 +34,7 @@ public class DraggablePiece : MonoBehaviour,
                 //Debug.Log("Snapping");
                 if (snapTarget.IsOccupied) 
                 {
-
-                    if (currentSnap != null)
-                    {
-                        SwitchPuzzlePieces(snapTarget);
-                         
-                    }
+                    SwitchPuzzlePieces(snapTarget);
                     return;
                 }
                 //Debug.Log("Ordinary Sanp");
@@ -70,18 +65,28 @@ public class DraggablePiece : MonoBehaviour,
 
     void SwitchPuzzlePieces(PuzzlePieceSpot newTarget)
     {
-        rectTransform.transform.position = newTarget.transform.position;
         DraggablePiece otherPiece = newTarget.currentPuzzlePiece;
+        
+        
+        otherPiece.currentSnap = currentSnap; 
 
-        otherPiece.rectTransform.transform.position = currentSnap.transform.position;
+        
 
+        if (currentSnap != null) 
+        {         
+            otherPiece.rectTransform.transform.position = currentSnap.transform.position;
+        }
+        else
+        {
+            otherPiece.rectTransform.transform.position = rectTransform.transform.position;
+        }
 
-        currentSnap.currentPuzzlePiece = otherPiece;
-        otherPiece.currentSnap = currentSnap;
-
+        rectTransform.transform.position = newTarget.transform.position;
         newTarget.currentPuzzlePiece = this;
         currentSnap = newTarget;
-        
+
+        otherPiece.rectTransform.SetAsLastSibling();
+
     }
 
     void Awake()
