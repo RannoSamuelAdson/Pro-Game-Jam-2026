@@ -1,6 +1,7 @@
 using FMOD.Studio;
 using FMODUnity;
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
@@ -75,9 +76,15 @@ public class InteractableObject : MonoBehaviour
         {
             // destroyed, swap sprite etc etc
             GetComponent<SpriteRenderer>().sprite = destroyedSprite;
-            dogLeave.start();
+            StartCoroutine(DelayDogLeave());
         }
 
+    }
+
+    private IEnumerator DelayDogLeave()
+    {
+        yield return new WaitForSeconds(0.4f);
+        dogLeave.start();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

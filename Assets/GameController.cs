@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
     {
         dogs--;
         SaveManager.Instance.runtimeData.dogs = dogs;
-        dogController.removeDog();
+        StartCoroutine(dogController.DelayDogErasure());
         Debug.Log($"dog lost.. {dogs} left..."); // TODO - fade to black here for a second
         if (dogs <= 0) // should we game over on 0 dogs or -1 dogs?
         {

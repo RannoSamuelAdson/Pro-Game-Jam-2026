@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,6 +30,11 @@ public class DogController : MonoBehaviour
         }
     }
 
+    public IEnumerator DelayDogErasure()
+    {
+        yield return new WaitForSeconds(0.3f);
+        removeDog();
+    }
     public void removeDog()
     {
         if (activeDogs.Count > 0)
