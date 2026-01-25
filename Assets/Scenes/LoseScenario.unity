@@ -181,8 +181,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6c8155cfa27689d43b2c6673434cfc1c, type: 2}
+  m_sharedMaterial: {fileID: -7304553589496105698, guid: 6c8155cfa27689d43b2c6673434cfc1c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -398,8 +398,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Your home is lost, your dogs have fled.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6c8155cfa27689d43b2c6673434cfc1c, type: 2}
+  m_sharedMaterial: {fileID: -7304553589496105698, guid: 6c8155cfa27689d43b2c6673434cfc1c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -613,12 +613,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98426d06abca8d147ac961fa44913af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EndScreenHandler
+  fadeDuration: 2
+  delayBetween: 1.5
   texts:
   - {fileID: 187975775}
   - {fileID: 503134330}
   - {fileID: 884149788}
-  fadeDuration: 2
-  delayBetween: 1.5
 --- !u!1 &837246229
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,8 +717,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: May another of your folk have greater luck.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6c8155cfa27689d43b2c6673434cfc1c, type: 2}
+  m_sharedMaterial: {fileID: -7304553589496105698, guid: 6c8155cfa27689d43b2c6673434cfc1c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
