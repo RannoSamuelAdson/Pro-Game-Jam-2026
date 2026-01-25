@@ -33,6 +33,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnPlayPressed()
     {
+        AudioManager.PlayOneShot(FMODEvents.Instance.GameStartClick);
         LevelChanger.Instance.FadeToLevel("LightingTest");
     }
 

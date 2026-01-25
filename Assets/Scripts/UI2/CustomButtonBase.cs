@@ -6,6 +6,7 @@ public abstract class CustomButtonBase : MonoBehaviour, ISelectHandler, IDeselec
 {
     public ButtonType type;
     public bool disableSelectAudio;
+    public bool disableClickAudio;
     private bool pointerDown = false;
     private bool isSelected = false;
 
@@ -43,6 +44,7 @@ public abstract class CustomButtonBase : MonoBehaviour, ISelectHandler, IDeselec
     private void ClickSound()
     {
         if (!isFirstBase) return;
+        if (disableClickAudio) return;
         switch (type)
         {
             case ButtonType.Normal:
