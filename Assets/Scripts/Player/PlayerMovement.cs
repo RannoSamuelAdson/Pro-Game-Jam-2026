@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using FMOD.Studio;
 using FMODUnity;
+using Mono.Cecil.Cil;
 
 // Ensure the component is present on the gameobject the script is attached to
 // Uncomment this if you want to enforce the object to require the RB2D component to be already attached
@@ -17,9 +18,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 currentMov;
 
     private EventInstance mudStepsInstance;
+    private Animator animator;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         mudStepsInstance = AudioManager.Instance.CreateInstance(FMODEvents.Instance.MudSteps);
         mudStepsInstance.set3DAttributes(RuntimeUtils.To3DAttributes(rigidbody2D.gameObject));
 
@@ -61,6 +64,18 @@ public class PlayerMovement : MonoBehaviour
     {
         //inputVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         mudStepsInstance.set3DAttributes(RuntimeUtils.To3DAttributes(rigidbody2D.gameObject));
+        
+        if (inputVector.x > 0f || inputVector.y > 0f || inputVector.x < 0f || inputVector.y < 0f)
+        {
+            animator.speed = 1f;
+            animator.SetFloat("Horizontal", inputVector.x);
+            animator.SetFloat("Vertical", inputVector.y);
+            mudStepsInstance.start(); // TODO - doesnt play properly yet
+        }
+        else
+        {
+            animator.speed = 0f;
+        }
 
     }
 
