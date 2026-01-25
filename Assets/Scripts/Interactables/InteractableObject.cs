@@ -10,7 +10,7 @@ public class InteractableObject : MonoBehaviour
     public static event Action<InteractableObject, bool> CloseToObject; // object, isClose
     [SerializeField] private Sprite destroyedSprite;
     private bool isActive = false;
-    private bool isPlayerClose;
+    private bool isPlayerClose = false;
     private bool isShaking = false;
     private float speed = 8.0f; //how fast it shakes
     private float amount = 0.05f; //how much it shakes
@@ -36,10 +36,10 @@ public class InteractableObject : MonoBehaviour
     {
         // START PLAYING KNOCKING/WHATEVER SFX here
         isActive = true;
-        // TODO - show it visually somehow
         GetComponent<SpriteRenderer>().color = Color.yellow;
         if (isPlayerClose)
         {
+            Debug.Log("was close");
             CloseToObject.Invoke(this, true);
             toolTip.SetActive(true);
         }
@@ -88,6 +88,7 @@ public class InteractableObject : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!collision.name.Contains("Player")) return;
         isPlayerClose = true;
         if (isActive)
         {
@@ -98,6 +99,7 @@ public class InteractableObject : MonoBehaviour
 
     private void OnTriggerExit2D(UnityEngine.Collider2D collision)
     {
+        if (!collision.name.Contains("Player")) return;
         isPlayerClose = false;
         if (isActive)
         {
