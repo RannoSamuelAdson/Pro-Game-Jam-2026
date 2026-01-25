@@ -50,6 +50,7 @@ public class GameController : MonoBehaviour
     private void HandleTimerEnd()
     {
         dogs--;
+        SaveManager.Instance.runtimeData.dogs = dogs;
         dogController.removeDog();
         Debug.Log($"dog lost.. {dogs} left..."); // TODO - fade to black here for a second
         if (dogs <= 0) // should we game over on 0 dogs or -1 dogs?
@@ -57,7 +58,7 @@ public class GameController : MonoBehaviour
             ChangeGameState.Invoke(GameState.Death);
             return;
         }
-        LeavePuzzleMode(true);
+        LeavePuzzleMode(false);
     }
 
     private void EnterPuzzleMode()
@@ -68,7 +69,7 @@ public class GameController : MonoBehaviour
     private void LeavePuzzleMode(bool finished)
     {
         ChangeGameState?.Invoke(GameState.Active);
-        if (finished)
+        if (finished) // FIXME - running out of time counts as a "win" rn
         {
             solvedPuzzles++;
             if (solvedPuzzles >= puzzleTarget)

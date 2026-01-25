@@ -6,7 +6,7 @@ public class DogController : MonoBehaviour
     public GameObject followTarget;
     public float distance = 1.3f;
     public float speed = 0.03f;
-    public GameObject DogPrefab;
+    public GameObject[] DogPrefabs;
 
     private List<GameObject> activeDogs = new List<GameObject>();
 
@@ -14,9 +14,15 @@ public class DogController : MonoBehaviour
 
     public void spawnDogs(int count)
     {
+        if (count > DogPrefabs.Length)
+        {
+            count = DogPrefabs.Length;
+            Debug.LogWarning("Cannot spawn more dogs than what we have prefabs for!");
+        }
+        Debug.Log(count);
         for (int i = 0; i < count; i++)
         {
-            GameObject newDog = Instantiate(DogPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject newDog = Instantiate(DogPrefabs[i], new Vector3(0, 0, 0), Quaternion.identity);
             Dog dogScript = newDog.GetComponent<Dog>();
             dogScript.Init(distance, speed, followTarget);
             activeDogs.Add(newDog);
