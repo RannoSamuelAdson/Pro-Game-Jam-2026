@@ -9,8 +9,8 @@ public class Lightning: MonoBehaviour
     public Light2D light2D;
 
     [Header("Trigger Timing")]
-    public float minDelay = 10f;
-    public float maxDelay = 20f;
+    public float minDelay = 12f;
+    public float maxDelay = 30f;
 
     [Header("Flash")]
     public float intensityAdd = 4f;

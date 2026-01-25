@@ -12,6 +12,8 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference Thunder { get; private set; }
     [field: SerializeField] public EventReference MainAmbience { get; private set; }
 
+    [field: SerializeField] public EventReference PuzzlePiece { get; private set; }
+    [field: SerializeField] public EventReference PuzzleOpen { get; private set; }
 
 
     [field: Header("UI")]

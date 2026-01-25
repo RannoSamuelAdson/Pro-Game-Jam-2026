@@ -197,6 +197,20 @@ MonoBehaviour:
       Data3: -1942595671
       Data4: 1710971971
     Path: event:/SFX/RainAmbience
+  <PuzzlePiece>k__BackingField:
+    Guid:
+      Data1: 1014487647
+      Data2: 1251816255
+      Data3: 992842924
+      Data4: 624807451
+    Path: event:/SFX/PuzzlePiece
+  <PuzzleOpen>k__BackingField:
+    Guid:
+      Data1: 1644112894
+      Data2: 1210675053
+      Data3: -1649522027
+      Data4: 1819788338
+    Path: event:/SFX/PuzzleOpen
   <ButtonClick>k__BackingField:
     Guid:
       Data1: -796810876

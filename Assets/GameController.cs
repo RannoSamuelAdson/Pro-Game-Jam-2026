@@ -74,7 +74,7 @@ public class GameController : MonoBehaviour
     private void LeavePuzzleMode(bool finished)
     {
         ChangeGameState?.Invoke(GameState.Active);
-        if (finished) // FIXME - running out of time counts as a "win" rn
+        if (finished) 
         {
             solvedPuzzles++;
             if (solvedPuzzles >= puzzleTarget)
