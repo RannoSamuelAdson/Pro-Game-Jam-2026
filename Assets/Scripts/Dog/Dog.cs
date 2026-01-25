@@ -28,7 +28,7 @@ public class Dog : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, _followTarget.transform.position) > _distance)
         {
-            transform.position = Vector3.MoveTowards(transform.position, _followTarget.transform.position + offset, Random.Range(0.07f, _speed););
+            transform.position = Vector3.MoveTowards(transform.position, _followTarget.transform.position + offset, Random.Range(0.07f, _speed));
             animator.speed = 1f;
             animator.SetFloat("Horizontal", transform.position.x * 10f);
             animator.SetFloat("Vertical", transform.position.y * 10f);
