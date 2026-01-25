@@ -52,11 +52,19 @@ public class PlayerMovement : MonoBehaviour
         if (started)
         {
             inputVector = movement.normalized;
+            mudStepsInstance.getPlaybackState(out PLAYBACK_STATE state);
+            if (state == PLAYBACK_STATE.STOPPED || state == PLAYBACK_STATE.STOPPING)
+                mudStepsInstance.start();
+            animator.speed = 1f;
+            animator.SetFloat("Horizontal", inputVector.x);
+            animator.SetFloat("Vertical", inputVector.y);
 
         }
         else
         {
             inputVector = Vector2.zero;
+            mudStepsInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            animator.speed = 0f;
         }
     }
 
@@ -64,19 +72,6 @@ public class PlayerMovement : MonoBehaviour
     {
         //inputVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         mudStepsInstance.set3DAttributes(RuntimeUtils.To3DAttributes(rigidbody2D.gameObject));
-        
-        if (inputVector.x > 0f || inputVector.y > 0f || inputVector.x < 0f || inputVector.y < 0f)
-        {
-            animator.speed = 1f;
-            animator.SetFloat("Horizontal", inputVector.x);
-            animator.SetFloat("Vertical", inputVector.y);
-            mudStepsInstance.start(); // TODO - doesnt play properly yet
-        }
-        else
-        {
-            animator.speed = 0f;
-        }
-
     }
 
     void FixedUpdate()
