@@ -45,6 +45,7 @@ public class GameController : MonoBehaviour
         {
             dogs = SaveManager.Instance.runtimeData.dogs;
         }
+        AudioManager.Instance.SetMusicParameter("Koerad", Mathf.Abs(dogs - 3));
         dogController.spawnDogs(dogs);
         solvedPuzzles = 0;
         puzzleTarget = data.targetScore;
@@ -53,6 +54,7 @@ public class GameController : MonoBehaviour
     private void HandleTimerEnd()
     {
         dogs--;
+        AudioManager.Instance.SetMusicParameter("Koerad", Mathf.Abs(dogs - 3));
         SaveManager.Instance.runtimeData.dogs = dogs;
         StartCoroutine(dogController.DelayDogErasure());
         Debug.Log($"dog lost.. {dogs} left..."); // TODO - fade to black here for a second

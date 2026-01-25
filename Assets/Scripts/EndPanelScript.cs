@@ -38,7 +38,7 @@ public class EndPanelScript : MonoBehaviour
     void LoadNextLevel()
     {
         // Call your level changer here
-        LevelChanger.Instance.FadeToLevel(SceneManager.GetActiveScene().name);
+        LevelChanger.Instance.FadeToLevel(SceneManager.GetActiveScene().name, false);
     }
 
     private void OnDisable()

@@ -146,9 +146,9 @@ public class LevelChanger : MonoBehaviour
     {
         StartCoroutine(FadeInCoroutine());
     }
-    public void FadeToLevel(string levelName)
+    public void FadeToLevel(string levelName, bool stopAudio = true)
     {
-        if (!loadInProgess) StartCoroutine(LoadLevel(levelName));
+        if (!loadInProgess) StartCoroutine(LoadLevel(levelName, stopAudio));
         else Debug.LogWarning($"Already loading a level, cannot load {levelName}!");
     }
     public void FadeToDesktop()
