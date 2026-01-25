@@ -211,6 +211,27 @@ MonoBehaviour:
       Data3: -1649522027
       Data4: 1819788338
     Path: event:/SFX/PuzzleOpen
+  <PuzzleCollect>k__BackingField:
+    Guid:
+      Data1: 1724437548
+      Data2: 1236357734
+      Data3: -626791767
+      Data4: -1105589350
+    Path: event:/SFX/PuzzleCollect
+  <Wolf>k__BackingField:
+    Guid:
+      Data1: 2043252285
+      Data2: 1253344705
+      Data3: -1429626704
+      Data4: 762137429
+    Path: event:/SFX/Wolf
+  <Walker>k__BackingField:
+    Guid:
+      Data1: -31266315
+      Data2: 1148214597
+      Data3: -1256342394
+      Data4: 1600177295
+    Path: event:/SFX/TheWalker
   <ButtonClick>k__BackingField:
     Guid:
       Data1: -796810876

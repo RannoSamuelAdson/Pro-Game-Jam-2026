@@ -26,9 +26,9 @@ MonoBehaviour:
     Path: event:/Music/GameplayMusic
   perLevelEnemy:
     Guid:
-      Data1: 1435801986
-      Data2: 1289215890
-      Data3: 2054081431
-      Data4: 133559032
-    Path: event:/SFX/VanaPagan
+      Data1: 2043252285
+      Data2: 1253344705
+      Data3: -1429626704
+      Data4: 762137429
+    Path: event:/SFX/Wolf
   targetScore: 1

@@ -15,6 +15,10 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference PuzzlePiece { get; private set; }
     [field: SerializeField] public EventReference PuzzleOpen { get; private set; }
 
+    [field: SerializeField] public EventReference PuzzleCollect { get; private set; }
+
+    [field: SerializeField] public EventReference Wolf { get; private set; }
+    [field: SerializeField] public EventReference Walker { get; private set; }
 
     [field: Header("UI")]
     [field: SerializeField] public EventReference ButtonClick { get; private set; }

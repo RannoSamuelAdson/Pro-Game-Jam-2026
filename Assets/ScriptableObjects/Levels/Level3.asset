@@ -19,6 +19,8 @@ MonoBehaviour:
   - {fileID: 7128421536432981020, guid: 98d5484fbcae0784d883ce35a5b4373c, type: 3}
   - {fileID: 3464715302059990368, guid: 4df596544be501e4aafe69bda2b5cd0d, type: 3}
   - {fileID: 6650285519162762457, guid: bc5c64d56e893c24dbbc7ee929c7ccbf, type: 3}
+  - {fileID: 8303441369139983698, guid: d083376cad499e2469af73016a7b133a, type: 3}
+  - {fileID: 3464715302059990368, guid: 4df596544be501e4aafe69bda2b5cd0d, type: 3}
   levelTheme:
     Guid:
       Data1: -241622894

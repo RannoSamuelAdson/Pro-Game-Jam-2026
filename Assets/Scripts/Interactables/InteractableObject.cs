@@ -18,11 +18,13 @@ public class InteractableObject : MonoBehaviour
     Vector2 startingPos;
     private EventInstance knockSfx;
     private EventInstance dogLeave;
+    private EventInstance shoutingMan;
     // maybe an array, objecthandler or w/e
     private GameObject toolTip;
     private TextMeshPro toolTipText;
     private bool puzzleUnlocked = false;
     private float nextKnockTime;
+    private float nextShoutTime;
     private void Start()
     {
         toolTip = transform.GetChild(0).gameObject;
@@ -42,6 +44,14 @@ public class InteractableObject : MonoBehaviour
         PieceSpawner.OnAllPiecesCollected += SetPuzzleAvailable;
         PuzzleController.OnLeavePuzzle += OnPuzzleFinish;
         Timer.OnTimerEnd += OnPuzzleFail;
+        LevelChanger.OnGameplayLevelLoaded += HandleLevelSetup;
+    }
+
+    private void HandleLevelSetup(LevelData data)
+    {
+        shoutingMan = AudioManager.Instance.CreateInstance(data.perLevelEnemy);
+        shoutingMan.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
+        nextShoutTime = Time.time + 4f;
     }
 
     private void OnPuzzleFinish(bool success)
@@ -83,6 +93,7 @@ public class InteractableObject : MonoBehaviour
         PieceSpawner.OnAllPiecesCollected -= SetPuzzleAvailable;
         PuzzleController.OnLeavePuzzle -= OnPuzzleFinish;
         Timer.OnTimerEnd -= OnPuzzleFail;
+        LevelChanger.OnGameplayLevelLoaded -= HandleLevelSetup;
     }
     private void Update()
     {
@@ -94,6 +105,12 @@ public class InteractableObject : MonoBehaviour
                 knockSfx.start();
                 nextKnockTime = Time.time + UnityEngine.Random.Range(3f, 10f);
             }
+
+            if (!AudioManager.IsPlaying(shoutingMan) && Time.time > nextShoutTime)
+            {
+                shoutingMan.start();
+                nextShoutTime = Time.time + UnityEngine.Random.Range(3f, 16f);
+            }
         }
     }
     public void DeactivateItem(bool success)
@@ -104,6 +121,7 @@ public class InteractableObject : MonoBehaviour
         isShaking = false;
         transform.position = startingPos;
         knockSfx.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        shoutingMan.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         if (success)
         {
             // all good we are safe, stop shaking

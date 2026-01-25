@@ -68,7 +68,7 @@ public class PieceSpawner : MonoBehaviour
     {
         piecesRemaining--;
         OnCountChanged?.Invoke(piecesRemaining);
-
+        AudioManager.PlayOneShot(FMODEvents.Instance.PuzzleCollect);
         if (piecesRemaining <= 0)
         {
             Debug.Log("Got dem all");
