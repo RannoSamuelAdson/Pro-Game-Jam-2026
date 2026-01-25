@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{b8f9c52b-8d05-45b2-b14b-53b291cbb0c2}">
 		<property name="assetPath">
-			<value>Animals, Dog, Breath, Whimpering 01 SND1496 S04 - Pitch 103_0.wav</value>
+			<value>SFX/Dog/Animals, Dog, Breath, Whimpering 01 SND1496 S04 - Pitch 103_0.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>96</value>
