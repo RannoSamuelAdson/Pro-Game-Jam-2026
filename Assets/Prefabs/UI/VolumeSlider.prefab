@@ -142,15 +142,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: SFX Volume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cda4fd03b21c9b841a8258a87cef5da8, type: 2}
-  m_sharedMaterial: {fileID: 1391168280119315432, guid: cda4fd03b21c9b841a8258a87cef5da8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6c8155cfa27689d43b2c6673434cfc1c, type: 2}
+  m_sharedMaterial: {fileID: -7304553589496105698, guid: 6c8155cfa27689d43b2c6673434cfc1c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0.5529412, g: 0.57254905, b: 0.7019608, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -444,6 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   disableSelectAudio: 0
+  disableClickAudio: 0
   scaleBy: 0.2
   duration: 0.15
   target: {fileID: 1621899301751137694}

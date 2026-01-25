@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9607843, g: 0.62352943, b: 0.6784314, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -355,8 +355,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Option A
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cda4fd03b21c9b841a8258a87cef5da8, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6c8155cfa27689d43b2c6673434cfc1c, type: 2}
+  m_sharedMaterial: {fileID: -7304553589496105698, guid: 6c8155cfa27689d43b2c6673434cfc1c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -386,7 +386,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -492,8 +492,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Resolution
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cda4fd03b21c9b841a8258a87cef5da8, type: 2}
-  m_sharedMaterial: {fileID: 1391168280119315432, guid: cda4fd03b21c9b841a8258a87cef5da8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6c8155cfa27689d43b2c6673434cfc1c, type: 2}
+  m_sharedMaterial: {fileID: -7304553589496105698, guid: 6c8155cfa27689d43b2c6673434cfc1c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9411765, g: 0.45882353, b: 0.5411765, a: 1}
+  m_Color: {r: 0.39, g: 0.24374998, b: 0.14624996, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1105,7 +1105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7647059, g: 0.2627451, b: 0.34901962, a: 1}
+  m_Color: {r: 0.1254902, g: 0.078431375, b: 0.04705883, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1316,6 +1316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   disableSelectAudio: 0
+  disableClickAudio: 0
   scaleBy: 0.2
   duration: 0.15
   target: {fileID: 0}
