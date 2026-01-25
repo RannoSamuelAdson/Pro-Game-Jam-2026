@@ -1,4 +1,6 @@
-using System.Collections;
+using UnityEngine;
+using UnityEngine.Rendering.Universal;
+
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -26,28 +28,7 @@ public class Lantern : MonoBehaviour
     public float value = 1f;
 
     float noiseSeed;
-    private bool lightOff = false;
-    private void OnEnable()
-    {
-        Timer.OnTimerEnd += DogDied;
-    }
 
-    private void OnDisable()
-    {
-        Timer.OnTimerEnd -= DogDied;
-    }
-
-    private void DogDied()
-    {
-        StartCoroutine(TurnOffLights());
-    }
-
-    IEnumerator TurnOffLights()
-    {
-        lightOff = true;
-        yield return new WaitForSeconds(1f);
-        lightOff = false;
-    }
     void Start()
     {
         if (!light2D)
@@ -58,11 +39,6 @@ public class Lantern : MonoBehaviour
 
     void Update()
     {
-        if (lightOff)
-        {
-            light2D.intensity = 0f;
-            return;
-        }
         // Chaotic speed
         float speedNoise = Mathf.PerlinNoise(Time.time, noiseSeed);
         float speed = baseSpeed + speedNoise * speedVariation;
@@ -80,5 +56,6 @@ public class Lantern : MonoBehaviour
 
         light2D.color = Color.HSVToRGB(hue, saturation, value);
     }
+
 }
 
