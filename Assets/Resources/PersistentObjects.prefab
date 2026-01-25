@@ -248,11 +248,11 @@ MonoBehaviour:
     Path: event:/Music/BadEnding
   <GoodEndingMusic>k__BackingField:
     Guid:
-      Data1: 188602688
-      Data2: 1255201342
-      Data3: -1840040518
-      Data4: -329448176
-    Path: event:/Music/BadEnding
+      Data1: 1578164557
+      Data2: 1103009753
+      Data3: -1717885769
+      Data4: -1764048628
+    Path: event:/Music/GoodEnding
   <GameplaySong>k__BackingField:
     Guid:
       Data1: 1454315384
