@@ -5,7 +5,7 @@ using UnityEngine;
 public class TemporaryText : MonoBehaviour
 {
     public bool bob; // If true, text never shows
-    public float delaySeconds = 7f;
+    public float delaySeconds = 15f;
     public float fadeDuration = 1f;
 
     private TMP_Text textComponent;
