@@ -5,8 +5,14 @@ public class InteractableObject : MonoBehaviour
 {
     public static event Action<InteractableObject> RegisterObject;
     public static event Action<InteractableObject, bool> CloseToObject; // object, isClose
+    [SerializeField] private Sprite destroyedSprite;
     private bool isActive = false;
     private bool isPlayerClose;
+    private bool isShaking = false;
+    private float speed = 8.0f; //how fast it shakes
+    private float amount = 0.05f; //how much it shakes
+    Vector2 startingPos;
+
     // maybe an array, objecthandler or w/e
     private GameObject toolTip;
     private void Start()
@@ -14,6 +20,8 @@ public class InteractableObject : MonoBehaviour
         toolTip = transform.GetChild(0).gameObject;
         toolTip.SetActive(false);
         RegisterObject?.Invoke(this);
+        startingPos.x = transform.position.x;
+        startingPos.y = transform.position.y;
     }
 
     public void ActivateItem()
@@ -27,23 +35,31 @@ public class InteractableObject : MonoBehaviour
             CloseToObject.Invoke(this, true);
             toolTip.SetActive(true);
         }
+        isShaking = true;
     }
 
+    private void Update()
+    {
+        if (isShaking)
+        {
+            transform.position =  new Vector2((startingPos.x + Mathf.Sin(Time.time * speed) * amount ), (startingPos.y + (Mathf.Sin(Time.time * speed) * amount) ));
+        }
+    }
     public void DeactivateItem(bool success)
     {
         isActive = false;
         toolTip.SetActive(false);
         // stop SFX as well
-
+        isShaking = false;
+        transform.position = startingPos;
         if (success)
         {
-            // TODO - all good we are safe
-            GetComponent<SpriteRenderer>().color = Color.green;
+            // all good we are safe, stop shaking
         }
         else
         {
             // destroyed, swap sprite etc etc
-            GetComponent<SpriteRenderer>().color = Color.orange;
+            GetComponent<SpriteRenderer>().sprite = destroyedSprite;
         }
 
     }
