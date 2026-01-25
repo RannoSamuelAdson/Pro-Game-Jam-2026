@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using UnityEngine.UIElements;
 using DG.Tweening;
+using TMPro;
 public class PieceSpawner : MonoBehaviour
 {
     public GameObject piecePrefab;
@@ -14,7 +15,7 @@ public class PieceSpawner : MonoBehaviour
 
     public static event Action<int> OnCountChanged; 
     public static event Action OnAllPiecesCollected;
-
+    public TextMeshProUGUI hintText;
     void Start()
     {
         spawnPieces();
@@ -73,6 +74,17 @@ public class PieceSpawner : MonoBehaviour
         {
             Debug.Log("Got dem all");
             OnAllPiecesCollected?.Invoke();
+            hintText.color = Helper.TransparentColor(hintText.color);
+            hintText.gameObject.SetActive(true);
+            hintText.text = "This should be enough";
+            hintText.DOFade(1f, 1f);
         }
+        StartCoroutine(HideText());
+    }
+
+    IEnumerator HideText()
+    {
+        yield return new WaitForSeconds(5f);
+        hintText.DOFade(0f, 1f);
     }
 }
