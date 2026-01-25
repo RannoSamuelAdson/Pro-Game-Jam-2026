@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{31b7c768-cb21-4fa7-9c4e-ea95d3c3cc26}">
+		<property name="assetPath">
+			<value>Weather, Thunder, Rain, Light, Summerstorm 01 SND3466.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>66.356312500000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{68d1ed9e-8091-45e0-aaa4-dc58aeb6d6ab}</destination>
+		</relationship>
+	</object>
+</objects>

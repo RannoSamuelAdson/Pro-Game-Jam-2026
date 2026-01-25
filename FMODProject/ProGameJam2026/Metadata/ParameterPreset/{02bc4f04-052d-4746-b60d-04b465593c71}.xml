@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{02bc4f04-052d-4746-b60d-04b465593c71}">
+		<property name="name">
+			<value>Dogs</value>
+		</property>
+		<relationship name="folder">
+			<destination>{e52d202b-c709-4fd2-8530-ec3fcfbf2cbc}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{d7302759-1c5f-4322-af67-a410c03f7b51}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{d7302759-1c5f-4322-af67-a410c03f7b51}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>3</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>3Doggies</value>
+			<value>2Doggies</value>
+			<value>1Doggy</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
