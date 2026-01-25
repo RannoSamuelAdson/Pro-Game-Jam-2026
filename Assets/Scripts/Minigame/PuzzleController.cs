@@ -1,16 +1,14 @@
 using System;
+using System.Collections.Generic; // Added for List support
 using UnityEngine;
 
 public class PuzzleController : MonoBehaviour
 {
-    [SerializeField] private GameObject[] puzzles;
+    [SerializeField] private List<GameObject> puzzles = new List<GameObject>(); // Changed to List
     private DraggablePiece[] pieces;
-    public static Action<bool> OnLeavePuzzle; // bool is success state, true: clear, false: left
-    private bool puzzleSolved = true; // true by default so a new puzzle gets spawned
+    public static Action<bool> OnLeavePuzzle;
+    private bool puzzleSolved = true;
 
-    // TODO - maybe delay hiding the gameobject on success
-
-    // Update is called once per frame
     void Update()
     {
         if (puzzleSolved) return;
@@ -25,8 +23,9 @@ public class PuzzleController : MonoBehaviour
 
     public void SetPuzzles(GameObject[] newPuzzles)
     {
-        puzzles = newPuzzles;
+        puzzles = new List<GameObject>(newPuzzles);
     }
+
     public void PuzzleSuccess()
     {
         OnLeavePuzzle?.Invoke(true);
@@ -34,9 +33,20 @@ public class PuzzleController : MonoBehaviour
 
     private void OnEnable()
     {
-        if (puzzleSolved)
+        if (puzzleSolved && puzzles.Count > 0)
         {
-            Instantiate(puzzles[UnityEngine.Random.Range(0, puzzles.Length)], transform.GetChild(0));
+            // 1. Pick a random index
+            int randomIndex = UnityEngine.Random.Range(0, puzzles.Count);
+
+            // 2. Instantiate the selected puzzle
+            Instantiate(puzzles[randomIndex], transform.GetChild(0));
+
+            // 3. Remove from list so it doesn't repeat, UNLESS it's the last one
+            if (puzzles.Count > 1)
+            {
+                puzzles.RemoveAt(randomIndex);
+            }
+
             puzzleSolved = false;
         }
 
@@ -52,6 +62,7 @@ public class PuzzleController : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
     public void ClosePuzzle()
     {
         OnLeavePuzzle?.Invoke(false);
@@ -59,9 +70,9 @@ public class PuzzleController : MonoBehaviour
 
     private void OnDisable()
     {
-        if (puzzleSolved)
+        if (puzzleSolved && transform.GetChild(0).childCount > 0)
         {
-            Destroy(transform.GetChild(0).GetChild(0).gameObject); // destroy old puzzle
+            Destroy(transform.GetChild(0).GetChild(0).gameObject);
         }
         GameController.ChangeGameState -= OnPuzzleEnd;
         InputHandler.OnPuzzleBack -= ClosePuzzle;
