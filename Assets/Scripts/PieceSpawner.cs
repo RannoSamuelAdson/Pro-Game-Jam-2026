@@ -23,11 +23,23 @@ public class PieceSpawner : MonoBehaviour
     private void OnEnable()
     {
         PuzzlePieceDrop.OnPieceCollected += HandlePieceCollected;
+        Timer.OnTimerEnd += spawnPieces;
+        PuzzleController.OnLeavePuzzle += HandlePuzzleEnd; 
+    }
+
+    private void HandlePuzzleEnd(bool success)
+    {
+        if (success)
+        {
+            spawnPieces();
+        }
     }
 
     private void OnDisable()
     {
         PuzzlePieceDrop.OnPieceCollected -= HandlePieceCollected;
+        Timer.OnTimerEnd -= spawnPieces;
+        PuzzleController.OnLeavePuzzle -= HandlePuzzleEnd;
     }
 
     private void spawnPieces()

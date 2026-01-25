@@ -16,7 +16,9 @@ MonoBehaviour:
   levelName: Level 2
   timer: 20
   puzzles:
-  - {fileID: 2713440985536019731, guid: 1a66de4872a3e91498648c0aeee3f002, type: 3}
+  - {fileID: 8778777394591149185, guid: 1276691eb9f3a224ab37d54de4028092, type: 3}
+  - {fileID: 8303441369139983698, guid: d083376cad499e2469af73016a7b133a, type: 3}
+  - {fileID: 7240710085158864156, guid: 0d57a10b4e5fecc40b17c4aca6871f1c, type: 3}
   levelTheme:
     Guid:
       Data1: -241622894
@@ -24,4 +26,11 @@ MonoBehaviour:
       Data3: -366814558
       Data4: 934009622
     Path: event:/Music/GameplayMusic
+  perLevelEnemy:
+    Guid:
+      Data1: 1435801986
+      Data2: 1289215890
+      Data3: 2054081431
+      Data4: 133559032
+    Path: event:/SFX/VanaPagan
   targetScore: 3

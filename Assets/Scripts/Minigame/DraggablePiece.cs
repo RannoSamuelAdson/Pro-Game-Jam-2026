@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using System;
 using Unity.VectorGraphics;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class DraggablePiece : MonoBehaviour,
     public PuzzlePieceSpot CorrectTarget;
     public float snapDistance = 50f; // pixels
     private PuzzlePieceSpot[] snapTargets;
-
+    private EventInstance snapSound;
     void TrySnap()
     {
         foreach (PuzzlePieceSpot snapTarget in snapTargets) {
@@ -49,9 +50,9 @@ public class DraggablePiece : MonoBehaviour,
 
                 currentSnap = snapTarget;
                 rectTransform.transform.position = snapTarget.transform.position;
-
+                
                 if (snapTarget == CorrectTarget) isCorrect = true;
-
+                snapSound.start();
                 return;
             }
 
@@ -93,6 +94,7 @@ public class DraggablePiece : MonoBehaviour,
     {
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
+        snapSound = AudioManager.Instance.CreateInstance(FMODEvents.Instance.PuzzlePiece);
     }
     private void OnEnable()
     {

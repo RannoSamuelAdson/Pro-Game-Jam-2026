@@ -22,6 +22,7 @@ public class InteractableObject : MonoBehaviour
     private GameObject toolTip;
     private TextMeshPro toolTipText;
     private bool puzzleUnlocked = false;
+    private float nextKnockTime;
     private void Start()
     {
         toolTip = transform.GetChild(0).gameObject;
@@ -39,6 +40,21 @@ public class InteractableObject : MonoBehaviour
     private void OnEnable()
     {
         PieceSpawner.OnAllPiecesCollected += SetPuzzleAvailable;
+        PuzzleController.OnLeavePuzzle += OnPuzzleFinish;
+        Timer.OnTimerEnd += OnPuzzleFail;
+    }
+
+    private void OnPuzzleFinish(bool success)
+    {
+        if (success)
+        {
+            puzzleUnlocked = false;
+        }
+    }
+
+    private void OnPuzzleFail()
+    {
+        puzzleUnlocked = false;
     }
 
     private void SetPuzzleAvailable()
@@ -65,18 +81,19 @@ public class InteractableObject : MonoBehaviour
     private void OnDisable()
     {
         PieceSpawner.OnAllPiecesCollected -= SetPuzzleAvailable;
+        PuzzleController.OnLeavePuzzle -= OnPuzzleFinish;
+        Timer.OnTimerEnd -= OnPuzzleFail;
     }
     private void Update()
     {
         if (isShaking)
         {
             transform.position = new Vector2((startingPos.x + Mathf.Sin(Time.time * speed) * amount), (startingPos.y + (Mathf.Sin(Time.time * speed) * amount)));
-            if (!AudioManager.IsPlaying(knockSfx))
+            if (!AudioManager.IsPlaying(knockSfx) && Time.time > nextKnockTime)
             {
                 knockSfx.start();
+                nextKnockTime = Time.time + UnityEngine.Random.Range(3f, 10f);
             }
-
-
         }
     }
     public void DeactivateItem(bool success)

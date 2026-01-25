@@ -13,6 +13,7 @@ public class LevelData : ScriptableObject
     public int timer;
     public GameObject[] puzzles;
     public EventReference levelTheme;
+    public EventReference perLevelEnemy;
     public int targetScore; // how many puzzles to do
     // TODO - handle enemy specific SFX somewhere, could just have it as a per-level setting, maybe an array where we pick random sfx from
 }

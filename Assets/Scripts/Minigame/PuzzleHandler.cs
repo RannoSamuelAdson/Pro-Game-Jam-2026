@@ -24,5 +24,6 @@ public class PuzzleHandler : MonoBehaviour
     private void OpenMenu()
     {
         puzzleMenu.SetActive(true);
+        AudioManager.PlayOneShot(FMODEvents.Instance.PuzzleOpen);
     }
 }
