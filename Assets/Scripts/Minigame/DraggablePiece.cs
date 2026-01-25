@@ -53,6 +53,7 @@ public class DraggablePiece : MonoBehaviour,
                 
                 if (snapTarget == CorrectTarget) isCorrect = true;
                 snapSound.start();
+                Debug.Log(isCorrect);
                 return;
             }
 

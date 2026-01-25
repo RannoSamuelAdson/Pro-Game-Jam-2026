@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelID: 1
   levelName: Level 2
-  timer: 20
+  timer: 50
   puzzles:
   - {fileID: 8778777394591149185, guid: 1276691eb9f3a224ab37d54de4028092, type: 3}
   - {fileID: 8303441369139983698, guid: d083376cad499e2469af73016a7b133a, type: 3}
