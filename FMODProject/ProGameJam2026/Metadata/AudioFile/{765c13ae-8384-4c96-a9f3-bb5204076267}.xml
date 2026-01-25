@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{765c13ae-8384-4c96-a9f3-bb5204076267}">
 		<property name="assetPath">
-			<value>Weather, Storm, Big Thunder Strike, Light Rain, Summerstorm SND3463.wav</value>
+			<value>SFX/Thunder/Weather, Storm, Big Thunder Strike, Light Rain, Summerstorm SND3463.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>96</value>

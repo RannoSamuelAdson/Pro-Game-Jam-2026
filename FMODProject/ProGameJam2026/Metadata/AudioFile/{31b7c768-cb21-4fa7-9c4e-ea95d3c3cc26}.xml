@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{31b7c768-cb21-4fa7-9c4e-ea95d3c3cc26}">
 		<property name="assetPath">
-			<value>Weather, Thunder, Rain, Light, Summerstorm 01 SND3466.wav</value>
+			<value>SFX/Thunder/Weather, Thunder, Rain, Light, Summerstorm 01 SND3466.wav</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

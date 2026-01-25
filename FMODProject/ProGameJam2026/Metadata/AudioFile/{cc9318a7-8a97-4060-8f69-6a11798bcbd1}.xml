@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{cc9318a7-8a97-4060-8f69-6a11798bcbd1}">
 		<property name="assetPath">
-			<value>Hiiu Kannel.wav</value>
+			<value>Music/Hiiu Kannel.wav</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

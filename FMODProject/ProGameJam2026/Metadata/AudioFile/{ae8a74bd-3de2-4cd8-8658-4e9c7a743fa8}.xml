@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{ae8a74bd-3de2-4cd8-8658-4e9c7a743fa8}">
 		<property name="assetPath">
-			<value>Kannel High.wav</value>
+			<value>Music/Kannel High.wav</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
