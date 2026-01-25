@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{e4da4223-806b-4620-b3d0-83feb297bde1}">
+		<property name="assetPath">
+			<value>Objects, Coin, Ring, Gemstone, Medium SND5558 S06.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.82776041666666667</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{68d1ed9e-8091-45e0-aaa4-dc58aeb6d6ab}</destination>
+		</relationship>
+	</object>
+</objects>
