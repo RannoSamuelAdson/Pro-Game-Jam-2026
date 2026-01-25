@@ -11,7 +11,7 @@ public class Dog : MonoBehaviour
     public void Init(float distance, float speed, GameObject followTarget)
     {
         _distance = distance;
-        _speed = Random.Range(0.02f, _speed);
+        _speed = speed;
         _followTarget = followTarget;
         animator = GetComponent<Animator>();
         animator.speed = 0f;
@@ -28,7 +28,7 @@ public class Dog : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, _followTarget.transform.position) > _distance)
         {
-            transform.position = Vector3.MoveTowards(transform.position, _followTarget.transform.position + offset, _speed);
+            transform.position = Vector3.MoveTowards(transform.position, _followTarget.transform.position + offset, Random.Range(0.07f, _speed););
             animator.speed = 1f;
             animator.SetFloat("Horizontal", transform.position.x * 10f);
             animator.SetFloat("Vertical", transform.position.y * 10f);
