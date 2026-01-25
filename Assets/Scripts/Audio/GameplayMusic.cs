@@ -47,9 +47,11 @@ public class GameplayMusic : MonoBehaviour
 
     private void InitializeMusic(EventReference song)
     {
-        AudioManager.Instance.InitializeMusic(song);
-        AudioManager.Instance.StartMusic();
-
+        if (!AudioManager.IsPlaying())
+        {
+            AudioManager.Instance.InitializeMusic(song);
+            AudioManager.Instance.StartMusic();
+        }
         var amb = AudioManager.Instance.CreateInstance(FMODEvents.Instance.MainAmbience);
         amb.start();
     }
