@@ -59,7 +59,11 @@
 			<destination>{a12df4fa-0f8c-4335-b85a-35e5568b281b}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{2bc044ff-3fea-4688-8b00-8e88a62d695a}" />
+	<object class="EventAutomatableProperties" id="{2bc044ff-3fea-4688-8b00-8e88a62d695a}">
+		<property name="triggerCooldown">
+			<value>180</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{40a7a7b6-fc04-4f34-b360-e8f081293fb8}" />
 	<object class="Timeline" id="{d3a6ea53-69eb-476e-96a0-9549035bdf45}">
 		<property name="isProxyEnabled">

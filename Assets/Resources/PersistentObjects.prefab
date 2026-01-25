@@ -92,6 +92,8 @@ MonoBehaviour:
   runtimeData:
     previousSceneName: 
     currentScore: 0
+    currentLevel: {fileID: 0}
+    dogs: 3
 --- !u!1 &5016839012092585960
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +162,41 @@ MonoBehaviour:
       Data3: -681687383
       Data4: -1136122197
     Path: event:/SFX/TestSound
+  <NockNock>k__BackingField:
+    Guid:
+      Data1: -1781559001
+      Data2: 1196893513
+      Data3: 1345811334
+      Data4: -618280178
+    Path: event:/SFX/NockNock
+  <MudSteps>k__BackingField:
+    Guid:
+      Data1: 2000247959
+      Data2: 1131512676
+      Data3: -1060898942
+      Data4: 347325459
+    Path: event:/SFX/MudSteps
+  <DogDeath>k__BackingField:
+    Guid:
+      Data1: -447082605
+      Data2: 1221034993
+      Data3: 1416385178
+      Data4: -1095698940
+    Path: event:/SFX/DogFallen
+  <Thunder>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <MainAmbience>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   <ButtonClick>k__BackingField:
     Guid:
       Data1: -796810876
@@ -181,6 +218,13 @@ MonoBehaviour:
       Data3: 841062535
       Data4: -432501705
     Path: event:/UI/uiHover
+  <GameStartClick>k__BackingField:
+    Guid:
+      Data1: 339008558
+      Data2: 1275021627
+      Data3: 508924076
+      Data4: -830024329
+    Path: event:/UI/uiGameStart
   <MenuMusic>k__BackingField:
     Guid:
       Data1: 1454315384
@@ -190,11 +234,25 @@ MonoBehaviour:
     Path: event:/Music/MenuMusic
   <CreditsMusic>k__BackingField:
     Guid:
-      Data1: 1454315384
-      Data2: 1268593857
-      Data3: -1216166235
-      Data4: 1742192061
-    Path: event:/Music/MenuMusic
+      Data1: 1710724797
+      Data2: 1173361205
+      Data3: 511828388
+      Data4: 323283671
+    Path: event:/Music/Credits
+  <BadEndingMusic>k__BackingField:
+    Guid:
+      Data1: 188602688
+      Data2: 1255201342
+      Data3: -1840040518
+      Data4: -329448176
+    Path: event:/Music/BadEnding
+  <GoodEndingMusic>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   <GameplaySong>k__BackingField:
     Guid:
       Data1: 1454315384

@@ -354,7 +354,11 @@
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{f0f5efbe-5241-4cb2-ad2c-8ef4e725f6ed}" />
-	<object class="SpatialiserEffect" id="{989a084b-86ca-4de2-8503-6051953b7ba3}" />
+	<object class="SpatialiserEffect" id="{989a084b-86ca-4de2-8503-6051953b7ba3}">
+		<property name="bypass">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{8075b693-e9ed-4185-8404-ec4075d6115f}" />
 	<object class="MixerBusFader" id="{a04373a5-0377-4c2a-ad0c-f5063e0ad9af}" />
 	<object class="AutomationPoint" id="{01d98926-3f30-4aae-8835-1999a5225008}">

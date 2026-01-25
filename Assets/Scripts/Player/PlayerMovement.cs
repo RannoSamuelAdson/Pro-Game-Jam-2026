@@ -2,6 +2,8 @@
 
 using System;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 // Ensure the component is present on the gameobject the script is attached to
 // Uncomment this if you want to enforce the object to require the RB2D component to be already attached
@@ -13,6 +15,15 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 inputVector = new Vector2(0.0f, 0.0f);
 
     private Vector2 currentMov;
+
+    private EventInstance mudStepsInstance;
+
+    void Start()
+    {
+        mudStepsInstance = AudioManager.Instance.CreateInstance(FMODEvents.Instance.MudSteps);
+        mudStepsInstance.set3DAttributes(RuntimeUtils.To3DAttributes(rigidbody2D.gameObject));
+
+    }
     void Awake()
     {
         // Setup Rigidbody for frictionless top down movement and dynamic collision
@@ -38,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         if (started)
         {
             inputVector = movement.normalized;
+
         }
         else
         {
@@ -48,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //inputVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        mudStepsInstance.set3DAttributes(RuntimeUtils.To3DAttributes(rigidbody2D.gameObject));
+
     }
 
     void FixedUpdate()
