@@ -1,10 +1,8 @@
 // from https://github.com/CCheckley/Unity-Top-Down-Player-Movement-2D
 
-using System;
-using UnityEngine;
 using FMOD.Studio;
 using FMODUnity;
-using Mono.Cecil.Cil;
+using UnityEngine;
 
 // Ensure the component is present on the gameobject the script is attached to
 // Uncomment this if you want to enforce the object to require the RB2D component to be already attached
