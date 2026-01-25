@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 278038786192643018}
   - component: {fileID: 6333953072976326093}
   - component: {fileID: 571774590048423809}
+  - component: {fileID: 9208551012629956510}
   m_Layer: 0
   m_Name: Dog
   m_TagString: Untagged
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 168911149
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1582716793, guid: 18959e71db3dcd340ae239466ae78e21, type: 3}
@@ -133,9 +134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1fe84800e72203b1a3ab050f4e617b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dog
-  followTarget: {fileID: 0}
-  distance: 1
-  speed: 0.03
+  _followTarget: {fileID: 0}
+  _distance: 0
+  _speed: 0
 --- !u!58 &571774590048423809
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -172,3 +173,25 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!95 &9208551012629956510
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4894523241374472781}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0a321f5b04659037290892ef04e487a8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

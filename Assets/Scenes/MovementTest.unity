@@ -420,6 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e18aadd76bd9c469a6eb3c21d9b503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  destroyedSprite: {fileID: 0}
 --- !u!61 &209644770
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3002,6 +3003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e18aadd76bd9c469a6eb3c21d9b503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  destroyedSprite: {fileID: 0}
 --- !u!61 &521351122
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4821,6 +4823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e18aadd76bd9c469a6eb3c21d9b503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  destroyedSprite: {fileID: 0}
 --- !u!1 &1751524234
 GameObject:
   m_ObjectHideFlags: 0
@@ -5272,6 +5275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e18aadd76bd9c469a6eb3c21d9b503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  destroyedSprite: {fileID: 0}
 --- !u!61 &2015856654
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5424,6 +5428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e18aadd76bd9c469a6eb3c21d9b503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  destroyedSprite: {fileID: 0}
 --- !u!61 &2019474413
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5737,6 +5742,9 @@ MonoBehaviour:
   smoothSpeed: 3
   mapX: 30
   mapY: 30
+  lightning: {fileID: 0}
+  shakeStrength: 0.15
+  shakeSpeed: 25
 --- !u!4 &2125741200
 Transform:
   m_ObjectHideFlags: 0
