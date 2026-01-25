@@ -7,7 +7,6 @@ public class PuzzlePieceDrop : MonoBehaviour
 {
     public static event Action<PuzzlePieceDrop> RegisterObject;
     public static event Action<PuzzlePieceDrop, bool> CloseToObject;
-    private bool isActive = true;
     private bool isPlayerClose;
     Vector2 startingPos;
 
@@ -35,9 +34,4 @@ public class PuzzlePieceDrop : MonoBehaviour
 
     }
 
-    private void OnTriggerExit2D(UnityEngine.Collider2D collision)
-    {
-        isPlayerClose = false;
-        CloseToObject?.Invoke(this, false);
-    }
 }
