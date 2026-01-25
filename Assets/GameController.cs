@@ -1,3 +1,4 @@
+using DG.Tweening;
 using FMOD.Studio;
 using System;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField] GameObject endPanel;
+    private CanvasGroup endPanelCG; // fuck it idc
     public static event Action<GameState> ChangeGameState;
     private GameState currentState;
     public DogController dogController;
@@ -105,7 +108,9 @@ public class GameController : MonoBehaviour
                 SaveManager.Instance.runtimeData.currentLevel = LevelChanger.Instance.GetNextLevel(currentLevel);
                 if (SaveManager.Instance.runtimeData.currentLevel != null)
                 {
-                    LevelChanger.Instance.FadeToLevel(SceneManager.GetActiveScene().name);
+                    endPanelCG.alpha = 0f;
+                    endPanel.gameObject.SetActive(true);
+                    endPanelCG.DOFade(1f, 0.5f);
                 }
                 else
                 {
@@ -122,6 +127,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        endPanelCG = endPanel.GetComponent<CanvasGroup>();
         LevelChanger.Instance.HandleLevelLoad();
     }
 
