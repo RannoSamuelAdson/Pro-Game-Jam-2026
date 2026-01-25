@@ -62,7 +62,7 @@
 	</object>
 	<object class="EventAutomatableProperties" id="{428d74b0-033c-4ccf-8e34-7c12df482da0}">
 		<property name="maximumDistance">
-			<value>45</value>
+			<value>40</value>
 		</property>
 	</object>
 	<object class="MarkerTrack" id="{ffe915d4-c647-4e49-a82a-2fcaa2952cb7}" />
@@ -117,7 +117,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{57036890-5632-4985-a54a-e4247d89710e}">
 		<property name="volume">
-			<value>-2.5</value>
+			<value>-5</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{c34e1f57-b84e-4054-b8df-8838e0b70c81}</destination>
@@ -142,6 +142,7 @@
 		<relationship name="modulators">
 			<destination>{4edafc60-79a6-4a6a-b3e0-94b9cda89816}</destination>
 			<destination>{5d486980-bf8e-4d85-8c0b-8621b5cfdb31}</destination>
+			<destination>{ed15d8e8-ed0b-495b-9421-e822931bd64e}</destination>
 		</relationship>
 		<relationship name="audioFile">
 			<destination>{9277a818-c27a-4bb5-80e2-d66a44a4ebe9}</destination>
@@ -217,6 +218,7 @@
 		<relationship name="modulators">
 			<destination>{9bc0b3ee-e612-498f-8e89-45db68be2af8}</destination>
 			<destination>{359a49ea-62f0-4602-84cb-30dbbab28899}</destination>
+			<destination>{c6a38420-a1a4-472f-b00c-3505a0996055}</destination>
 		</relationship>
 		<relationship name="fadeInCurve">
 			<destination>{f4d6e160-2e58-4e63-8189-9bdf7403ecd3}</destination>
@@ -246,6 +248,7 @@
 		<relationship name="modulators">
 			<destination>{4b71e959-262e-43a4-9c49-72d1f91ef383}</destination>
 			<destination>{9c21d062-897a-42c0-8c8d-696bab9dae50}</destination>
+			<destination>{dd9d766e-513a-4d1a-9091-567c273c31df}</destination>
 		</relationship>
 		<relationship name="sounds">
 			<destination>{d4d49bac-4de8-4d05-9a4f-3a410fa293d7}</destination>
@@ -279,6 +282,7 @@
 		<relationship name="modulators">
 			<destination>{69e33a0a-de67-44f0-8c73-42eb3729f81c}</destination>
 			<destination>{cc7ad25a-e8ad-42d1-9b3d-cf37088b8fed}</destination>
+			<destination>{8dceb746-af90-482a-85ae-7a0cfa26f925}</destination>
 		</relationship>
 		<relationship name="audioFile">
 			<destination>{c6db09dc-2c5d-4d39-9a53-82fdeeec8746}</destination>
@@ -326,6 +330,14 @@
 			<value>2</value>
 		</property>
 	</object>
+	<object class="RandomizerModulator" id="{ed15d8e8-ed0b-495b-9421-e822931bd64e}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>startOffset</value>
+		</property>
+		<property name="amount">
+			<value>33.5</value>
+		</property>
+	</object>
 	<object class="MixerBusEffectChain" id="{0e683ad0-fc69-4361-951c-890749d895a9}">
 		<relationship name="effects">
 			<destination>{420eae01-531e-4836-a556-507d6487155c}</destination>
@@ -337,7 +349,7 @@
 			<value>startOffset</value>
 		</property>
 		<property name="amount">
-			<value>10</value>
+			<value>42</value>
 		</property>
 	</object>
 	<object class="FadeCurve" id="{4b3140bb-48fd-41df-89de-36eb01b0774d}">
@@ -368,6 +380,14 @@
 		</property>
 		<property name="amount">
 			<value>1.5</value>
+		</property>
+	</object>
+	<object class="RandomizerModulator" id="{c6a38420-a1a4-472f-b00c-3505a0996055}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>startOffset</value>
+		</property>
+		<property name="amount">
+			<value>60</value>
 		</property>
 	</object>
 	<object class="FadeCurve" id="{f4d6e160-2e58-4e63-8189-9bdf7403ecd3}">
@@ -401,6 +421,14 @@
 			<value>1</value>
 		</property>
 	</object>
+	<object class="RandomizerModulator" id="{dd9d766e-513a-4d1a-9091-567c273c31df}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>startOffset</value>
+		</property>
+		<property name="amount">
+			<value>82.5</value>
+		</property>
+	</object>
 	<object class="SingleSound" id="{d4d49bac-4de8-4d05-9a4f-3a410fa293d7}">
 		<relationship name="audioFile">
 			<destination>{ac53477a-936a-4add-9da5-937cdbdb9bff}</destination>
@@ -432,6 +460,14 @@
 		</property>
 		<property name="amount">
 			<value>1.5</value>
+		</property>
+	</object>
+	<object class="RandomizerModulator" id="{8dceb746-af90-482a-85ae-7a0cfa26f925}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>startOffset</value>
+		</property>
+		<property name="amount">
+			<value>32</value>
 		</property>
 	</object>
 	<object class="MixerBusEffectChain" id="{5269660b-55ce-45c6-af8b-90ef1f6d124b}">
