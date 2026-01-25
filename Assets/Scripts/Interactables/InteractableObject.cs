@@ -2,6 +2,7 @@ using FMOD.Studio;
 using FMODUnity;
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
@@ -19,10 +20,13 @@ public class InteractableObject : MonoBehaviour
     private EventInstance dogLeave;
     // maybe an array, objecthandler or w/e
     private GameObject toolTip;
+    private TextMeshPro toolTipText;
+    private bool puzzleUnlocked = false;
     private void Start()
     {
         toolTip = transform.GetChild(0).gameObject;
         toolTip.SetActive(false);
+        toolTipText = toolTip.GetComponentInChildren<TextMeshPro>();
         RegisterObject?.Invoke(this);
         startingPos.x = transform.position.x;
         startingPos.y = transform.position.y;
@@ -30,6 +34,17 @@ public class InteractableObject : MonoBehaviour
         knockSfx.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
         dogLeave = AudioManager.Instance.CreateInstance(FMODEvents.Instance.DogDeath);
         dogLeave.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
+    }
+
+    private void OnEnable()
+    {
+        PieceSpawner.OnAllPiecesCollected += SetPuzzleAvailable;
+    }
+
+    private void SetPuzzleAvailable()
+    {
+        puzzleUnlocked = true;
+        toolTipText.text = "PRESS E";
     }
 
     public void ActivateItem()
@@ -44,19 +59,23 @@ public class InteractableObject : MonoBehaviour
             toolTip.SetActive(true);
         }
         isShaking = true;
-        
+
     }
 
+    private void OnDisable()
+    {
+        PieceSpawner.OnAllPiecesCollected -= SetPuzzleAvailable;
+    }
     private void Update()
     {
         if (isShaking)
         {
-            transform.position =  new Vector2((startingPos.x + Mathf.Sin(Time.time * speed) * amount ), (startingPos.y + (Mathf.Sin(Time.time * speed) * amount) ));
+            transform.position = new Vector2((startingPos.x + Mathf.Sin(Time.time * speed) * amount), (startingPos.y + (Mathf.Sin(Time.time * speed) * amount)));
             if (!AudioManager.IsPlaying(knockSfx))
             {
                 knockSfx.start();
             }
-            
+
 
         }
     }
@@ -93,6 +112,14 @@ public class InteractableObject : MonoBehaviour
         if (isActive)
         {
             CloseToObject.Invoke(this, true);
+            if (puzzleUnlocked)
+            {
+                toolTipText.text = "PRESS E";
+            }
+            else
+            {
+                toolTipText.text = "GATHER THE PIECES";
+            }
             toolTip.SetActive(true);
         }
     }

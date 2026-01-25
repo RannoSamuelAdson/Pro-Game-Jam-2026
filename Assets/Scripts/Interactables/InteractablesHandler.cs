@@ -12,7 +12,7 @@ public class InteractablesHandler : MonoBehaviour
     private float waitTime = 3f; // time to wait until new incident. could be randomized later.
     private int maxActivatedObjects = 1; // can change if needed.
     private bool itemActivated = false; // hardcoded to one active situation atm
-    
+    private bool hasFoundAllPieces = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -26,6 +26,7 @@ public class InteractablesHandler : MonoBehaviour
         InputHandler.OnInteractInput += HandleInteract;
         PuzzleController.OnLeavePuzzle += OnEndPuzzle;
         Timer.OnTimerEnd += OnFailPuzzle;
+        PieceSpawner.OnAllPiecesCollected += EnablePuzzle;
     }
 
     private void OnDisable()
@@ -35,11 +36,17 @@ public class InteractablesHandler : MonoBehaviour
         InputHandler.OnInteractInput -= HandleInteract;
         PuzzleController.OnLeavePuzzle -= OnEndPuzzle;
         Timer.OnTimerEnd -= OnFailPuzzle;
+        PieceSpawner.OnAllPiecesCollected -= EnablePuzzle;
+    }
+
+    private void EnablePuzzle()
+    {
+        hasFoundAllPieces = true;
     }
 
     private void HandleInteract()
     {
-        if (currentSelectedObject == null) return;
+        if (currentSelectedObject == null || !hasFoundAllPieces) return;
         OpenPuzzleMenu?.Invoke();
         
     }
@@ -63,6 +70,7 @@ public class InteractablesHandler : MonoBehaviour
     private void OnEndPuzzle(bool finished)
     {
         if (!finished) return;
+        hasFoundAllPieces = false;
         interactableObjects.Remove(currentSelectedObject);
         activatedObjects.Remove(currentSelectedObject);
         currentSelectedObject.DeactivateItem(true);
@@ -76,7 +84,7 @@ public class InteractablesHandler : MonoBehaviour
         if (itemActivated)
         {
             interactableObjects.Remove(currentSelectedObject);
-
+            hasFoundAllPieces = false;
             foreach (var item in activatedObjects)
             {
                 item.DeactivateItem(false);
