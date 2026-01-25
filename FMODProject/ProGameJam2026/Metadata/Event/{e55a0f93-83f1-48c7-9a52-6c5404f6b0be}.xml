@@ -56,7 +56,11 @@
 			<destination>{4fac1f27-9410-46a2-8680-f7bb020cc009}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{98b146d8-fdff-434f-8c5a-635799b289a0}" />
+	<object class="EventAutomatableProperties" id="{98b146d8-fdff-434f-8c5a-635799b289a0}">
+		<property name="maximumDistance">
+			<value>60</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{dca3d381-2def-4796-b414-80270be6bb27}" />
 	<object class="GroupTrack" id="{a670c64b-b41d-454b-9886-382fa2929c10}">
 		<relationship name="modules">
@@ -72,6 +76,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{e28749ba-e0ad-45f9-a176-dcdb73efb622}">
+		<property name="volume">
+			<value>6.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{48a613ed-43e5-430d-8983-f7dccf53c561}</destination>
 		</relationship>

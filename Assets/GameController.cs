@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -50,7 +51,7 @@ public class GameController : MonoBehaviour
     {
         dogs--;
         dogController.removeDog();
-        Debug.Log($"dog lost.. {dogs} left...");
+        Debug.Log($"dog lost.. {dogs} left..."); // TODO - fade to black here for a second
         if (dogs <= 0) // should we game over on 0 dogs or -1 dogs?
         {
             ChangeGameState.Invoke(GameState.Death);

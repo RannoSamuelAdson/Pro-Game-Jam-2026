@@ -15,9 +15,10 @@ public class EndScreenHandler : MonoBehaviour
 
     void Start()
     {
+        AudioManager.Instance.InitializeMusic(FMODEvents.Instance.BadEndingMusic); // TODO - change depending on ending, can check scene name or whateverA
         AudioManager.Instance.StartMusic();
         LevelChanger.Instance.FadeIn();
-        disposable = InputSystem.onAnyButtonPress.CallOnce(ctrl => OnEndScreenEnd());
+        disposable = InputSystem.onAnyButtonPress.CallOnce(ctrl => OnEndScreenEnd()); // please improve this. right now you will skip it instantly even if youd want to make text go faster
         Time.timeScale = 1f;
         
         

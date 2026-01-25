@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System;
 using UnityEngine;
 
@@ -12,7 +14,8 @@ public class InteractableObject : MonoBehaviour
     private float speed = 8.0f; //how fast it shakes
     private float amount = 0.05f; //how much it shakes
     Vector2 startingPos;
-
+    private EventInstance knockSfx;
+    private EventInstance dogLeave;
     // maybe an array, objecthandler or w/e
     private GameObject toolTip;
     private void Start()
@@ -22,6 +25,10 @@ public class InteractableObject : MonoBehaviour
         RegisterObject?.Invoke(this);
         startingPos.x = transform.position.x;
         startingPos.y = transform.position.y;
+        knockSfx = AudioManager.Instance.CreateInstance(FMODEvents.Instance.NockNock);
+        knockSfx.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
+        dogLeave = AudioManager.Instance.CreateInstance(FMODEvents.Instance.DogDeath);
+        dogLeave.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
     }
 
     public void ActivateItem()
@@ -36,6 +43,7 @@ public class InteractableObject : MonoBehaviour
             toolTip.SetActive(true);
         }
         isShaking = true;
+        
     }
 
     private void Update()
@@ -43,6 +51,12 @@ public class InteractableObject : MonoBehaviour
         if (isShaking)
         {
             transform.position =  new Vector2((startingPos.x + Mathf.Sin(Time.time * speed) * amount ), (startingPos.y + (Mathf.Sin(Time.time * speed) * amount) ));
+            if (!AudioManager.IsPlaying(knockSfx))
+            {
+                knockSfx.start();
+            }
+            
+
         }
     }
     public void DeactivateItem(bool success)
@@ -52,6 +66,7 @@ public class InteractableObject : MonoBehaviour
         // stop SFX as well
         isShaking = false;
         transform.position = startingPos;
+        knockSfx.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         if (success)
         {
             // all good we are safe, stop shaking
@@ -60,6 +75,7 @@ public class InteractableObject : MonoBehaviour
         {
             // destroyed, swap sprite etc etc
             GetComponent<SpriteRenderer>().sprite = destroyedSprite;
+            dogLeave.start();
         }
 
     }

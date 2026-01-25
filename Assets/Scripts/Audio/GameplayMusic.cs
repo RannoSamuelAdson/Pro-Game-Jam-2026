@@ -49,6 +49,9 @@ public class GameplayMusic : MonoBehaviour
     {
         AudioManager.Instance.InitializeMusic(song);
         AudioManager.Instance.StartMusic();
+
+        var amb = AudioManager.Instance.CreateInstance(FMODEvents.Instance.MainAmbience);
+        amb.start();
     }
 
     // code from prev game for fading in parameters

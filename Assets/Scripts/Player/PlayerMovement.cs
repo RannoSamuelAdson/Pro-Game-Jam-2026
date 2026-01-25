@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        animator.speed = 0f;
         mudStepsInstance = AudioManager.Instance.CreateInstance(FMODEvents.Instance.MudSteps);
         mudStepsInstance.set3DAttributes(RuntimeUtils.To3DAttributes(rigidbody2D.gameObject));
 

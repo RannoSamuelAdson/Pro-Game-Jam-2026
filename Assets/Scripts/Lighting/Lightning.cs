@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using System.Collections;
+using FMOD.Studio;
+using FMODUnity;
 
 public class Lightning: MonoBehaviour
 {
@@ -25,12 +27,11 @@ public class Lightning: MonoBehaviour
     [Header("Movement")]
     public float moveSpeed = 20f;
     public LightningAnchor currentAnchor;
-
+    public EventInstance thunderInstance;
     void Start()
     {
         if (!light2D)
             light2D = GetComponent<Light2D>();
-
         noiseSeed = Random.Range(0f, 1000f);
         StartCoroutine(LightningLoop());
     }
@@ -71,7 +72,8 @@ public class Lightning: MonoBehaviour
 
             yield return null;
         }
-
+        AudioManager.PlayOneShot(FMODEvents.Instance.Thunder);
+        Debug.Log("thandar");
         // DISSIPATION
         timer = 0f;
         float startIntensity = light2D.intensity;

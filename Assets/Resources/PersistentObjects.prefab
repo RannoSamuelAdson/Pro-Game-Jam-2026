@@ -185,18 +185,18 @@ MonoBehaviour:
     Path: event:/SFX/DogFallen
   <Thunder>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -859624051
+      Data2: 1254052859
+      Data3: 1238096029
+      Data4: -193272381
+    Path: event:/SFX/Thunder
   <MainAmbience>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1018803162
+      Data2: 1194698042
+      Data3: -1942595671
+      Data4: 1710971971
+    Path: event:/SFX/RainAmbience
   <ButtonClick>k__BackingField:
     Guid:
       Data1: -796810876
@@ -248,11 +248,11 @@ MonoBehaviour:
     Path: event:/Music/BadEnding
   <GoodEndingMusic>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 188602688
+      Data2: 1255201342
+      Data3: -1840040518
+      Data4: -329448176
+    Path: event:/Music/BadEnding
   <GameplaySong>k__BackingField:
     Guid:
       Data1: 1454315384

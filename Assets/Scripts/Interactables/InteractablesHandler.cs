@@ -51,6 +51,10 @@ public class InteractablesHandler : MonoBehaviour
         else if (currentSelectedObject == obj && !isClose)
             currentSelectedObject = null;
         // if currently selected is unrelated, ignore but log
+        else if (currentSelectedObject == null)
+        {
+            Debug.LogWarning("walked away from obj that wasnt even selected");
+        }
         else
             Debug.LogWarning($"Walked away from {obj.name}, even though current selected is {currentSelectedObject.name}");
     }
