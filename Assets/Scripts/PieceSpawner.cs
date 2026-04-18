@@ -5,6 +5,7 @@ using System.Collections;
 using UnityEngine.UIElements;
 using DG.Tweening;
 using TMPro;
+using Random = UnityEngine.Random;
 public class PieceSpawner : MonoBehaviour
 {
     public GameObject piecePrefab;
@@ -59,6 +60,7 @@ public class PieceSpawner : MonoBehaviour
 
             GameObject newPiece = Instantiate(piecePrefab, new Vector3(randomX, randomY, 0), Quaternion.identity);
             newPiece.GetComponent<SpriteRenderer>().sprite = spriteList[i];
+            newPiece.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0.8f, 1f), Random.Range(0f, 0.8f), Random.Range(0f, 0.2f));
             newPiece.GetComponent<SpriteRenderer>().color = Helper.TransparentColor(newPiece.GetComponent<SpriteRenderer>().color);
             newPiece.GetComponent<SpriteRenderer>().DOFade(1f, 0.5f);
             yield return new WaitForSeconds(6f);
