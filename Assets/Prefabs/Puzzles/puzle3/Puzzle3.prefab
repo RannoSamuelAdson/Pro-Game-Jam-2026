@@ -610,7 +610,7 @@ PrefabInstance:
     - target: {fileID: 5427411425520979155, guid: 967b3eac508b761489f32e6af148a8dd, type: 3}
       propertyPath: CorrectTarget
       value: 
-      objectReference: {fileID: 461504445723060487}
+      objectReference: {fileID: 4386232702967737815}
     - target: {fileID: 5885035295313026495, guid: 967b3eac508b761489f32e6af148a8dd, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -1454,7 +1454,7 @@ PrefabInstance:
     - target: {fileID: 9145643863767458793, guid: f5b3015ffe094e34abd61d4b9b4a4fea, type: 3}
       propertyPath: CorrectTarget
       value: 
-      objectReference: {fileID: 4386232702967737815}
+      objectReference: {fileID: 461504445723060487}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -50,9 +50,14 @@ public class DraggablePiece : MonoBehaviour,
 
                 currentSnap = snapTarget;
                 rectTransform.transform.position = snapTarget.transform.position;
+
+                if (snapTarget == CorrectTarget)
+                {
+                    snapSound.start();
+                    isCorrect = true;
+                }
+                else isCorrect = false;
                 
-                if (snapTarget == CorrectTarget) isCorrect = true;
-                snapSound.start();
                 Debug.Log(isCorrect);
                 return;
             }
