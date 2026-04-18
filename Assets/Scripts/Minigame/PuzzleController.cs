@@ -39,8 +39,8 @@ public class PuzzleController : MonoBehaviour
             int randomIndex = UnityEngine.Random.Range(0, puzzles.Count);
 
             // 2. Instantiate the selected puzzle
-            Instantiate(puzzles[randomIndex], transform.GetChild(0));
-
+            GameObject puzzle = Instantiate(puzzles[randomIndex], transform.GetChild(0));
+            puzzle.transform.SetLocalPositionAndRotation(new Vector3(-400f, 0), puzzle.transform.localRotation);
             // 3. Remove from list so it doesn't repeat, UNLESS it's the last one
             if (puzzles.Count > 1)
             {
